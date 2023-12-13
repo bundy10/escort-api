@@ -6,4 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Escort.Client.Domain\Escort.Client.Domain.csproj" />
+      <ProjectReference Include="..\Escort.Driver.Domain\Escort.Driver.Domain.csproj" />
+      <ProjectReference Include="..\Escort.User.Domain\Escort.User.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
