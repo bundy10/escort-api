@@ -1,6 +1,7 @@
-namespace UserDetails.Domain.Models;
+namespace Escort.User.Domain.Models;
 
 public class BaseDomainModel
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; set; }  
 }
+
