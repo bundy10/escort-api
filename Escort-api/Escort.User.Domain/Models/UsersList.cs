@@ -1,10 +1,10 @@
 namespace Escort.User.Domain.Models;
 
-public class UsersDomainModel : BaseDomainModel
+public class UsersList : BaseDomainModel
 {
     public required ICollection<User> Users { get; set; }
 
-    public UsersDomainModel WithId()
+    public UsersList WithId()
     {
         this.Id = Guid.NewGuid();
         return this;

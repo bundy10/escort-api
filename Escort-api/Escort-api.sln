@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Listing.Domain", "Es
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.User.Application", "Escort.User.Application\Escort.User.Application.csproj", "{2B64FEDB-AE66-4453-A51D-66E830D10299}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Event.Application", "Escort.Event.Application\Escort.Event.Application.csproj", "{E0860D55-0D9A-4C98-9F4D-69579059BB73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,7 @@ Global
 		{555171F4-13A7-490A-A8A5-5828D99AE808} = {A6260133-BACB-4E94-8B1E-10867EB2978C}
 		{9715B343-B664-4DCF-9518-F29CA51C916B} = {FBF4AD17-BF1A-4D7E-834C-B298C3F35FDC}
 		{2B64FEDB-AE66-4453-A51D-66E830D10299} = {01CC549D-FD37-4D2F-A48E-5C5644AE337A}
+		{E0860D55-0D9A-4C98-9F4D-69579059BB73} = {10903A25-4264-4380-BC37-92EB471E2DD9}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9B516829-4DCC-4A4F-AC8A-C3BAAD6341F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -60,5 +63,9 @@ Global
 		{2B64FEDB-AE66-4453-A51D-66E830D10299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B64FEDB-AE66-4453-A51D-66E830D10299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B64FEDB-AE66-4453-A51D-66E830D10299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0860D55-0D9A-4C98-9F4D-69579059BB73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0860D55-0D9A-4C98-9F4D-69579059BB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0860D55-0D9A-4C98-9F4D-69579059BB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0860D55-0D9A-4C98-9F4D-69579059BB73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
