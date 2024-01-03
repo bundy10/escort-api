@@ -38,4 +38,9 @@ public class ClientService : IClientService
         return await _clientRepository.DeleteAsync(id);
     }
     
+    public async Task<Domain.Models.Client> GetClientByUserIdAsync(Guid userId)
+    {
+        return await _clientRepository.GetByUserIdAsync(userId);
+    }
+    
 }
