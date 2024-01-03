@@ -28,8 +28,9 @@ public class UserService : IUserService
         return await _userRepository.GetByIdAsync(id);
     }
     
-    public async Task<Domain.Models.User> UpdateUserAsync(Domain.Models.User user)
+    public async Task<Domain.Models.User> UpdateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails)
     {
+        var user = new Domain.Models.User(userDetails, userVerificationDetails);
         return await _userRepository.UpdateAsync(user);
     }
     
