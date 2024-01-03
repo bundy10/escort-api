@@ -10,8 +10,4 @@
       <ProjectReference Include="..\Escort.User.Domain\Escort.User.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Services\" />
-    </ItemGroup>
-
 </Project>

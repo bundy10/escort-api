@@ -5,11 +5,12 @@ namespace Escort.User.Domain.Models;
 public class User : BaseDomainModel
 {
     public UserContactDetails UserContactDetails { get; set; }
-    public UserVerificationDetails UserVerificationDetails = new();
+    public UserVerificationDetails UserVerificationDetails {get; set;}
 
-    public User(UserContactDetails userContactDetails)
+    public User(UserContactDetails userContactDetails, UserVerificationDetails userVerificationDetails)
     {
         UserContactDetails = userContactDetails;
+        UserVerificationDetails = userVerificationDetails;
     }
     public User WithId()
     {
