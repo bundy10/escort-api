@@ -2,13 +2,15 @@ namespace Escort.Listing.Domain.Models;
 
 public class Listing : BaseDomainModel
 {
-    public required bool Listed { get; set; }
-    public required User.Domain.Models.User ListingOwner;
+    public bool Listed { get; set; }
+    public ListingDetails ListingDetails { get; set; }
 
-    public Listing(User.Domain.Models.User user)
+    public Listing(ListingDetails listingDetails)
     {
-        ListingOwner = user;
+        Listed = true;
+        ListingDetails = listingDetails;
     }
+    
     public Listing WithId()
     {
         this.Id = Guid.NewGuid();
