@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Escort.Listing.Infrastructure.Repositories;
+namespace Escort.Listing.Infrastructure.DBcontext;
 
 public class ListingDbContext : DbContext
 {
