@@ -1,6 +1,6 @@
 namespace Escort.User.Domain.Models;
 
-public class UserContactDetails
+public class UserContactDetails : BaseDomainModel
 {
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
