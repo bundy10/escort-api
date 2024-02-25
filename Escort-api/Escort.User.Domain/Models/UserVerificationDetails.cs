@@ -1,6 +1,6 @@
 namespace Escort.User.Domain.Models;
 
-public class UserVerificationDetails
+public class UserVerificationDetails : BaseDomainModel
 {
     public string? DriversLicenseNumber { get; set; }
     public string? PassportNumber { get; set; }

@@ -30,6 +30,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Driver.Application",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Listing.Application", "Escort.Listing.Application\Escort.Listing.Application.csproj", "{EA2BD307-E34D-46DB-9341-1047F9800882}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.User.Infrastructure", "Escort.User.Infrastructure\Escort.User.Infrastructure.csproj", "{83B808FD-4927-4972-B74E-4AA59AA792D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Listing.Infrastructure", "Escort.Listing.Infrastructure\Escort.Listing.Infrastructure.csproj", "{8E09134C-7FC1-443F-9AE9-A0F5677EC66D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Event.Infrastructure", "Escort.Event.Infrastructure\Escort.Event.Infrastructure.csproj", "{9F1BA37D-A632-4A89-A9F2-E2FF597EFE3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Driver.Infrastructure", "Escort.Driver.Infrastructure\Escort.Driver.Infrastructure.csproj", "{D428D80F-C48F-44A9-8843-390C2D54B070}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Client.Infrastructure", "Escort.Client.Infrastructure\Escort.Client.Infrastructure.csproj", "{1B3B085C-23F8-4077-921C-0C40EF299DB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +56,11 @@ Global
 		{F9579C73-259D-4076-A61C-B2DEC9703BFC} = {A6260133-BACB-4E94-8B1E-10867EB2978C}
 		{0952969E-8A2D-4ED2-84CF-FE49B6AC9813} = {2AEFEAFF-5351-4AA4-AC9F-B2B36626BBB3}
 		{EA2BD307-E34D-46DB-9341-1047F9800882} = {FBF4AD17-BF1A-4D7E-834C-B298C3F35FDC}
+		{83B808FD-4927-4972-B74E-4AA59AA792D0} = {01CC549D-FD37-4D2F-A48E-5C5644AE337A}
+		{8E09134C-7FC1-443F-9AE9-A0F5677EC66D} = {FBF4AD17-BF1A-4D7E-834C-B298C3F35FDC}
+		{9F1BA37D-A632-4A89-A9F2-E2FF597EFE3A} = {10903A25-4264-4380-BC37-92EB471E2DD9}
+		{D428D80F-C48F-44A9-8843-390C2D54B070} = {2AEFEAFF-5351-4AA4-AC9F-B2B36626BBB3}
+		{1B3B085C-23F8-4077-921C-0C40EF299DB4} = {A6260133-BACB-4E94-8B1E-10867EB2978C}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9B516829-4DCC-4A4F-AC8A-C3BAAD6341F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -88,5 +103,25 @@ Global
 		{EA2BD307-E34D-46DB-9341-1047F9800882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA2BD307-E34D-46DB-9341-1047F9800882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA2BD307-E34D-46DB-9341-1047F9800882}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83B808FD-4927-4972-B74E-4AA59AA792D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B808FD-4927-4972-B74E-4AA59AA792D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83B808FD-4927-4972-B74E-4AA59AA792D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B808FD-4927-4972-B74E-4AA59AA792D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E09134C-7FC1-443F-9AE9-A0F5677EC66D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E09134C-7FC1-443F-9AE9-A0F5677EC66D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E09134C-7FC1-443F-9AE9-A0F5677EC66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E09134C-7FC1-443F-9AE9-A0F5677EC66D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F1BA37D-A632-4A89-A9F2-E2FF597EFE3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F1BA37D-A632-4A89-A9F2-E2FF597EFE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F1BA37D-A632-4A89-A9F2-E2FF597EFE3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F1BA37D-A632-4A89-A9F2-E2FF597EFE3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D428D80F-C48F-44A9-8843-390C2D54B070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D428D80F-C48F-44A9-8843-390C2D54B070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D428D80F-C48F-44A9-8843-390C2D54B070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D428D80F-C48F-44A9-8843-390C2D54B070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B3B085C-23F8-4077-921C-0C40EF299DB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B3B085C-23F8-4077-921C-0C40EF299DB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B3B085C-23F8-4077-921C-0C40EF299DB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B3B085C-23F8-4077-921C-0C40EF299DB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
