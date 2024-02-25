@@ -1,7 +1,7 @@
 using Escort.User.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Escort.User.Infrastructure.Repositories;
+namespace Escort.User.Infrastructure.DBcontext;
 
 public class UserDbContext : DbContext
 {
