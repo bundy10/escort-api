@@ -1,9 +1,9 @@
+
 using Escort.Event.Application.Repositories;
-using Escort.User.Application.Repositories;
 using Escort.User.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Escort.User.Infrastructure.Repositories;
+namespace Escort.Event.Infrastructure.Repositories;
 
 public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : BaseDomainModel
 {
