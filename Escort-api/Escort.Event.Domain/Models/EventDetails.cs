@@ -1,6 +1,6 @@
 namespace Escort.Event.Domain.Models;
 
-public class EventDetails
+public class EventDetails : BaseDomainModel
 {
     public EventDetails(DateTime date, DateTime startTime, DateTime endTime, DateTime bookingTime, User.Domain.Models.User user, Client.Domain.Models.Client client, Driver.Domain.Models.Driver? driver, Listing.Domain.Models.Listing listing)
     {

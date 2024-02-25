@@ -1,6 +1,6 @@
 
 using Escort.Event.Application.Repositories;
-using Escort.User.Domain.Models;
+using Escort.Event.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Escort.Event.Infrastructure.Repositories;
