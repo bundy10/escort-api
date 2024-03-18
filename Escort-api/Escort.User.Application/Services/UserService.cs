@@ -38,4 +38,9 @@ public class UserService : IUserService
     {
         return await _userRepository.DeleteAsync(id);
     }
+    
+    public async Task<Domain.Models.User> GetUserWithListingsAsync(Guid userId)
+    {
+        return await _userRepository.GetUserWithListingsAsync(userId);
+    }
 }
