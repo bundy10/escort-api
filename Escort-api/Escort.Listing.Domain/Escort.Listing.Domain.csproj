@@ -6,8 +6,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Escort.User.Domain\Escort.User.Domain.csproj" />
-    </ItemGroup>
-
 </Project>
