@@ -4,9 +4,8 @@ namespace Escort.User.API.DTO;
 
 public static class UserMapper 
 {
-    public static UserGetDTO ToDto(this Domain.Models.UserContactDetails userContactDetails, UserVerificationDetails userVerificationDetails)
+    public static UserGetDTO ToDto(this Domain.Models.User user)
     {
-        var user = new Domain.Models.User(userContactDetails, userVerificationDetails);
         return new UserGetDTO()
         {
             Id = user.Id,
