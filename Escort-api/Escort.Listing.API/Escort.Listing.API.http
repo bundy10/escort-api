@@ -1,0 +1,6 @@
+@Escort.Listing.API_HostAddress = http://localhost:5068
+
+GET {{Escort.Listing.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
