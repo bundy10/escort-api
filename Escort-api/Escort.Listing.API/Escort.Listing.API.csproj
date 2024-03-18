@@ -18,4 +18,10 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Escort.Listing.Application\Escort.Listing.Application.csproj" />
+      <ProjectReference Include="..\Escort.Listing.Domain\Escort.Listing.Domain.csproj" />
+      <ProjectReference Include="..\Escort.Listing.Infrastructure\Escort.Listing.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>
