@@ -8,4 +8,10 @@ public class Driver : BaseDomainModel
     {
         DriverContactDetails = driverContactDetails;
     }
+    
+    public Driver WithId()
+    {
+        Id = Guid.NewGuid();
+        return this;
+    }
 }
