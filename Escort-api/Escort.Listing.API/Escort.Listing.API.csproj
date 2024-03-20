@@ -9,7 +9,6 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.2.24128.4" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
@@ -20,10 +19,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Escort.Listing.API\Escort.Listing.API.csproj" />
-      <ProjectReference Include="..\Escort.User.Application\Escort.User.Application.csproj" />
-      <ProjectReference Include="..\Escort.User.Domain\Escort.User.Domain.csproj" />
-      <ProjectReference Include="..\Escort.User.Infrastructure\Escort.User.Infrastructure.csproj" />
+      <ProjectReference Include="..\Escort.Listing.Application\Escort.Listing.Application.csproj" />
+      <ProjectReference Include="..\Escort.Listing.Domain\Escort.Listing.Domain.csproj" />
+      <ProjectReference Include="..\Escort.Listing.Infrastructure\Escort.Listing.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

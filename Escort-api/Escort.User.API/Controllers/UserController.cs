@@ -76,4 +76,12 @@ public class UserController : Controller
     {
         return Ok();
     }
+    
+    [HttpGet("{id}/listings")]
+    public async Task<IActionResult> GetUserWithListings(Guid id)
+    {
+        var user = await _userRepository.GetUserWithListingsAsync(id);
+
+        return Ok(user.ToDto());
+    }
 }

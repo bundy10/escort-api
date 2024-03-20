@@ -1,3 +1,4 @@
+using Escort.Listing.API.DTO;
 using Escort.User.Domain.Models;
 
 namespace Escort.User.API.DTO;
@@ -10,7 +11,8 @@ public static class UserMapper
         {
             Id = user.Id,
             UserContactDetails = user.UserContactDetails,
-            UserVerificationDetails = user.UserVerificationDetails
+            UserVerificationDetails = user.UserVerificationDetails,
+            Listings = user.Listings
         };
         
     }
