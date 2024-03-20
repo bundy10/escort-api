@@ -1,0 +1,6 @@
+@Escort.Driver.API_HostAddress = http://localhost:5291
+
+GET {{Escort.Driver.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -19,9 +19,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Escort.Event.Application\Escort.Event.Application.csproj" />
-      <ProjectReference Include="..\Escort.Event.Domain\Escort.Event.Domain.csproj" />
-      <ProjectReference Include="..\Escort.Event.Infrastructure\Escort.Event.Infrastructure.csproj" />
+      <ProjectReference Include="..\Escort.Driver.Application\Escort.Driver.Application.csproj" />
+      <ProjectReference Include="..\Escort.Driver.Domain\Escort.Driver.Domain.csproj" />
+      <ProjectReference Include="..\Escort.Driver.Infrastructure\Escort.Driver.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
