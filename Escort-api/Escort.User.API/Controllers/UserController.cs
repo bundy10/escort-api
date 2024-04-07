@@ -58,12 +58,12 @@ public class UserController : Controller
     }
     
     [HttpDelete("{id:guid}")]
-    public async Task<ActionResult> DeleteUser(Guid id)
+    public async Task<ActionResult<UserGetDTO>> DeleteUser(Guid id)
     {
         try
         {
-            await _userRepository.DeleteAsync(id);
-            return NoContent();
+            var user = await _userRepository.DeleteAsync(id);
+            return Ok(user.ToDto());
         }
         catch (ModelNotFoundException)
         {
