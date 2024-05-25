@@ -14,10 +14,4 @@ public class ClientContactDetails: BaseDomainModel
         Email = email;
         PhoneNumber = phoneNumber;
     }
-    
-    public ClientContactDetails WithId()
-    {
-        this.Id = Guid.NewGuid();
-        return this;
-    }
 }

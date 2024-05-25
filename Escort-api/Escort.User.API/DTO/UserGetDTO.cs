@@ -4,6 +4,6 @@ namespace Escort.User.API.DTO;
 
 public class UserGetDTO : UserPostPutDto
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     
 }

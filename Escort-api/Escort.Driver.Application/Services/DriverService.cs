@@ -23,7 +23,7 @@ public class DriverService : IDriverService
         return await _driverRepository.GetAllAsync();
     }
     
-    public async Task<Domain.Models.Driver> GetDriverByIdAsync(Guid id)
+    public async Task<Domain.Models.Driver> GetDriverByIdAsync(int id)
     {
         return await _driverRepository.GetByIdAsync(id);
     }
@@ -34,7 +34,7 @@ public class DriverService : IDriverService
         return await _driverRepository.UpdateAsync(driver);
     }
     
-    public async Task<Domain.Models.Driver> DeleteDriverAsync(Guid id)
+    public async Task<Domain.Models.Driver> DeleteDriverAsync(int id)
     {
         return await _driverRepository.DeleteAsync(id);
     }

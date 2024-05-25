@@ -13,6 +13,6 @@ public static class DriverMapper
     
     public static Domain.Models.Driver ToDomain(this DriverPostPutDto driverDto)
     {
-        return new Domain.Models.Driver(driverDto.DriverContactDetails).WithId();
+        return new Domain.Models.Driver(driverDto.DriverContactDetails);
     }
 }

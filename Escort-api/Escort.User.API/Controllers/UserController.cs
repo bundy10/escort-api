@@ -23,8 +23,8 @@ public class UserController : Controller
         return Ok(users.Select(user => user.ToDto()));
     }
     
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetUserById(Guid id)
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetUserById(int id)
     {
         var user = await _userRepository.GetByIdAsync(id);
         return Ok(user.ToDto());
@@ -37,8 +37,8 @@ public class UserController : Controller
         return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user.ToDto());
     }
     
-    [HttpPut("{id:guid}")]
-    public async Task<ActionResult<UserGetDTO>> UpdateUser(Guid id, [FromBody] UserPostPutDto userPostPutDto)
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<UserGetDTO>> UpdateUser(int id, [FromBody] UserPostPutDto userPostPutDto)
     {
         {
             try
@@ -57,8 +57,8 @@ public class UserController : Controller
         }
     }
     
-    [HttpDelete("{id:guid}")]
-    public async Task<ActionResult<UserGetDTO>> DeleteUser(Guid id)
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<UserGetDTO>> DeleteUser(int id)
     {
         try
         {
@@ -75,13 +75,5 @@ public class UserController : Controller
     public IActionResult HealthCheck()
     {
         return Ok();
-    }
-    
-    [HttpGet("{id}/listings")]
-    public async Task<IActionResult> GetUserWithListings(Guid id)
-    {
-        var user = await _userRepository.GetUserWithListingsAsync(id);
-
-        return Ok(user.ToDto());
     }
 }

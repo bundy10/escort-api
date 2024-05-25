@@ -23,8 +23,8 @@ public class ListingController : Controller
         return Ok(listings.Select(listing => listing.ToDto()));
     }
     
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetListingById(Guid id)
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetListingById(int id)
     {
         var listing = await _listingRepository.GetByIdAsync(id);
         return Ok(listing.ToDto());
@@ -37,8 +37,8 @@ public class ListingController : Controller
         return CreatedAtAction(nameof(GetListingById), new { id = listing.Id }, listing.ToDto());
     }
     
-    [HttpPut("{id:guid}")]
-    public async Task<ActionResult<ListingGetDTO>> UpdateListing(Guid id, [FromBody] ListingPostPutDto listingPostPutDto)
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<ListingGetDTO>> UpdateListing(int id, [FromBody] ListingPostPutDto listingPostPutDto)
     {
         {
             try

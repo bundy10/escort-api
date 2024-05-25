@@ -23,8 +23,8 @@ public class DriverController : Controller
         return Ok(drivers.Select(driver => driver.ToDto()));
     }
     
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetDriverById(Guid id)
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetDriverById(int id)
     {
         var driver = await _driverRepository.GetByIdAsync(id);
         return Ok(driver.ToDto());
@@ -37,8 +37,8 @@ public class DriverController : Controller
         return CreatedAtAction(nameof(GetDriverById), new { id = driver.Id }, driver.ToDto());
     }
     
-    [HttpPut("{id:guid}")]
-    public async Task<ActionResult<DriverGetDTO>> UpdateDriver(Guid id, [FromBody] DriverPostPutDto driverPostPutDto)
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<DriverGetDTO>> UpdateDriver(int id, [FromBody] DriverPostPutDto driverPostPutDto)
     {
         {
             try

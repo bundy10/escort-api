@@ -20,7 +20,7 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         return await Task.Run(() => _entities.AsNoTracking());
     }
 
-    public async Task<TEntity> GetAsync(Guid id)
+    public async Task<TEntity> GetAsync(int id)
     {
         var entity = await _entities.AsNoTracking().SingleOrDefaultAsync(e => e.Id == id);
 
@@ -46,7 +46,7 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         return entity;
     }
     
-    public async Task<TEntity> GetByIdAsync(Guid id)
+    public async Task<TEntity> GetByIdAsync(int id)
     {
         var entity = await _entities.AsNoTracking().SingleOrDefaultAsync(e => e.Id == id);
 
@@ -55,7 +55,7 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         return entity;
     }
     
-    public async Task<TEntity> DeleteAsync(Guid id)
+    public async Task<TEntity> DeleteAsync(int id)
     {
         var entityToDelete = await GetByIdAsync(id);
         _entities.Remove(entityToDelete);

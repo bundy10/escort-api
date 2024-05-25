@@ -8,9 +8,4 @@ public class Event : BaseDomainModel
     {
         EventDetails = eventDetails;
     }
-    public Event WithId()
-    {
-        this.Id = Guid.NewGuid();
-        return this;
-    }
 }

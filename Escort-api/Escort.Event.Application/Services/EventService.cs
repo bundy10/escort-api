@@ -23,7 +23,7 @@ public class EventService : IEventService
         return await _eventRepository.GetAllAsync();
     }
     
-    public async Task<Domain.Models.Event> GetByIdAsync(Guid id)
+    public async Task<Domain.Models.Event> GetByIdAsync(int id)
     {
         return await _eventRepository.GetByIdAsync(id);
     }
@@ -34,7 +34,7 @@ public class EventService : IEventService
         return await _eventRepository.UpdateAsync(eventT);
     }
     
-    public async Task<Domain.Models.Event> DeleteAsync(Guid id)
+    public async Task<Domain.Models.Event> DeleteAsync(int id)
     {
         return await _eventRepository.DeleteAsync(id);
     }

@@ -1,5 +1,6 @@
 using System.ComponentModel.Design;
 using Escort.Listing.Application.Repositories;
+using Escort.Listing.Domain.Models;
 
 namespace Escort.Listing.Application.Services;
 
@@ -12,7 +13,7 @@ public class ListingService : IListingService
         _listingRepository = listingRepository;
     }
     
-    public async Task<Domain.Models.Listing> CreateAsync(Domain.Models.ListingDetails listingDetails, Guid userId)
+    public async Task<Domain.Models.Listing> CreateAsync(ListingDetails listingDetails, int userId)
     {
         var listing = new Domain.Models.Listing(listingDetails, userId);
         return await _listingRepository.CreateAsync(listing);
@@ -23,18 +24,18 @@ public class ListingService : IListingService
         return await _listingRepository.GetAllAsync();
     }
     
-    public async Task<Domain.Models.Listing> GetByIdAsync(Guid id)
+    public async Task<Domain.Models.Listing> GetByIdAsync(int id)
     {
         return await _listingRepository.GetByIdAsync(id);
     }
     
-    public async Task<Domain.Models.Listing> UpdateAsync(Domain.Models.ListingDetails listingDetails, Guid userId)
+    public async Task<Domain.Models.Listing> UpdateAsync(ListingDetails listingDetails, int userId)
     {
         var listing = new Domain.Models.Listing(listingDetails, userId);
         return await _listingRepository.UpdateAsync(listing);
     }
     
-    public async Task<Domain.Models.Listing> DeleteAsync(Guid id)
+    public async Task<Domain.Models.Listing> DeleteAsync(int id)
     {
         return await _listingRepository.DeleteAsync(id);
     }

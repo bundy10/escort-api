@@ -8,9 +8,4 @@ public class Client : BaseDomainModel
     {
         ClientContactDetails = clientContactDetails;
     }
-    public Client WithId()
-    {
-        this.Id = Guid.NewGuid();
-        return this;
-    }
 }

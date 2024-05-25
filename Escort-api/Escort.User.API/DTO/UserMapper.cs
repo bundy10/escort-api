@@ -12,12 +12,11 @@ public static class UserMapper
             Id = user.Id,
             UserContactDetails = user.UserContactDetails,
             UserVerificationDetails = user.UserVerificationDetails,
-            Listings = user.Listings
         };
         
     }
     public static Domain.Models.User ToDomain(this UserPostPutDto userPostPutDto)
     {
-        return new Domain.Models.User(userPostPutDto.UserContactDetails, userPostPutDto.UserVerificationDetails).WithId();
+        return new Domain.Models.User(userPostPutDto.UserContactDetails, userPostPutDto.UserVerificationDetails);
     }
 }

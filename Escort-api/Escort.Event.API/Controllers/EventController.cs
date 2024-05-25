@@ -23,8 +23,8 @@ public class EventController : Controller
         return Ok(events.Select(@event => @event.ToDto()));
     }
     
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetEventById(Guid id)
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetEventById(int id)
     {
         var @event = await _eventRepository.GetByIdAsync(id);
         return Ok(@event.ToDto());
@@ -37,8 +37,8 @@ public class EventController : Controller
         return CreatedAtAction(nameof(GetEventById), new { id = @event.Id }, @event.ToDto());
     }
     
-    [HttpPut("{id:guid}")]
-    public async Task<ActionResult<EventGetDTO>> UpdateEvent(Guid id, [FromBody] EventPostPutDto eventPostPutDto)
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<EventGetDTO>> UpdateEvent(int id, [FromBody] EventPostPutDto eventPostPutDto)
     {
         {
             try

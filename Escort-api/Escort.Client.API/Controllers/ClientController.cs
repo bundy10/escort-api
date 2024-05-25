@@ -23,8 +23,8 @@ public class ClientController : Controller
         return Ok(clients.Select(client => client.ToDto()));
     }
     
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetClientById(Guid id)
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetClientById(int id)
     {
         var client = await _clientRepository.GetByIdAsync(id);
         return Ok(client.ToDto());
@@ -37,8 +37,8 @@ public class ClientController : Controller
         return CreatedAtAction(nameof(GetClientById), new { id = client.Id }, client.ToDto());
     }
     
-    [HttpPut("{id:guid}")]
-    public async Task<ActionResult<ClientGetDTO>> UpdateClient(Guid id, [FromBody] ClientPostPutDto clientPostPutDto)
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<ClientGetDTO>> UpdateClient(int id, [FromBody] ClientPostPutDto clientPostPutDto)
     {
         {
             try

@@ -23,11 +23,4 @@ public class EventDetails : BaseDomainModel
     public Client.Domain.Models.Client Client { get; set; }
     public Driver.Domain.Models.Driver? Driver { get; set; } 
     public Listing.Domain.Models.Listing Listing { get; set; }
-    
- 
-    public EventDetails WithId()
-    {
-        this.Id = Guid.NewGuid();
-        return this;
-    }
 }

@@ -14,7 +14,6 @@ public static class EventMapper
 
     public static Domain.Models.Event ToDomain(this EventPostPutDto eventDto)
     {
-        return new Domain.Models.Event(eventDto.EventDetails)
-            .WithId();
+        return new Domain.Models.Event(eventDto.EventDetails);
     }
 }
