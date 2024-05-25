@@ -15,7 +15,7 @@ public class ListingService : IListingService
     
     public async Task<Domain.Models.Listing> CreateAsync(ListingDetails listingDetails, int userId)
     {
-        var listing = new Domain.Models.Listing(listingDetails, userId);
+        var listing = new Domain.Models.Listing();
         return await _listingRepository.CreateAsync(listing);
     }
     
@@ -31,7 +31,7 @@ public class ListingService : IListingService
     
     public async Task<Domain.Models.Listing> UpdateAsync(ListingDetails listingDetails, int userId)
     {
-        var listing = new Domain.Models.Listing(listingDetails, userId);
+        var listing = new Domain.Models.Listing();
         return await _listingRepository.UpdateAsync(listing);
     }
     

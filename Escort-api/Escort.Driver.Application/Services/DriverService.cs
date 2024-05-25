@@ -14,7 +14,7 @@ public class DriverService : IDriverService
     
     public async Task<Domain.Models.Driver> CreateDriverAsync(DriverContactDetails driverContactDetails)
     {
-        var driver = new Driver.Domain.Models.Driver(driverContactDetails);
+        var driver = new Driver.Domain.Models.Driver();
         return await _driverRepository.CreateAsync(driver);
     }
     
@@ -30,7 +30,7 @@ public class DriverService : IDriverService
     
     public async Task<Domain.Models.Driver> UpdateDriverAsync(DriverContactDetails driverContactDetails)
     {
-        var driver = new Domain.Models.Driver(driverContactDetails);
+        var driver = new Domain.Models.Driver();
         return await _driverRepository.UpdateAsync(driver);
     }
     

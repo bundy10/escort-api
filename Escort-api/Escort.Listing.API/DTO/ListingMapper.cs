@@ -16,6 +16,11 @@ public static class ListingMapper
     
     public static Domain.Models.Listing ToDomain(this ListingPostPutDto listingPostPutDto)
     {
-        return new Domain.Models.Listing(listingPostPutDto.ListingDetails, listingPostPutDto.UserId);
+        return new Domain.Models.Listing()
+        {
+            Listed = listingPostPutDto.Listed,
+            ListingDetails = listingPostPutDto.ListingDetails,
+            UserId = listingPostPutDto.UserId
+        };
     }
 }

@@ -14,7 +14,7 @@ public class EventService : IEventService
 
     public async Task<Domain.Models.Event> CreateAsync(EventDetails eventDetails)
     {
-        var eventT = new Domain.Models.Event(eventDetails);
+        var eventT = new Domain.Models.Event();
         return await _eventRepository.CreateAsync(eventT);
     }
     
@@ -30,7 +30,7 @@ public class EventService : IEventService
     
     public async Task<Domain.Models.Event> UpdateAsync(EventDetails eventDetails)
     {
-        var eventT = new Domain.Models.Event(eventDetails);
+        var eventT = new Domain.Models.Event();
         return await _eventRepository.UpdateAsync(eventT);
     }
     

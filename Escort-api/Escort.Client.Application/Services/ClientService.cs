@@ -23,13 +23,13 @@ public class ClientService : IClientService
 
     public async Task<Domain.Models.Client> CreateClientAsync(Domain.Models.ClientContactDetails clientContactDetails)
     {
-        var client = new Domain.Models.Client(clientContactDetails);
+        var client = new Domain.Models.Client();
         return await _clientRepository.CreateAsync(client);
     }
 
     public async Task<Domain.Models.Client> UpdateClientAsync(Domain.Models.ClientContactDetails clientContactDetails)
     {
-        var client = new Domain.Models.Client(clientContactDetails);
+        var client = new Domain.Models.Client();
         return await _clientRepository.UpdateAsync(client);
     }
 

@@ -13,6 +13,9 @@ public static class ClientMapper
     
     public static Domain.Models.Client ToDomain(this ClientPostPutDto clientDto)
     {
-        return new Domain.Models.Client(clientDto.ClientContactDetails);
+        return new Domain.Models.Client()
+        {
+            ClientContactDetails = clientDto.ClientContactDetails
+        };
     }
 }
