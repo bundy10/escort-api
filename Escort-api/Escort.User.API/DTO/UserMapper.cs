@@ -17,6 +17,10 @@ public static class UserMapper
     }
     public static Domain.Models.User ToDomain(this UserPostPutDto userPostPutDto)
     {
-        return new Domain.Models.User(userPostPutDto.UserContactDetails, userPostPutDto.UserVerificationDetails);
+        return new Domain.Models.User()
+        {
+            UserContactDetails = userPostPutDto.UserContactDetails,
+            UserVerificationDetails = userPostPutDto.UserVerificationDetails,
+        };
     }
 }

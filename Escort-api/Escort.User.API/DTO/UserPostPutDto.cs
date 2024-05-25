@@ -6,6 +6,4 @@ public class UserPostPutDto
 {
     public UserContactDetails UserContactDetails { get; set; }
     public UserVerificationDetails UserVerificationDetails { get; set; }
-    
-    public ICollection<Listing.Domain.Models.Listing>? Listings { get; set; }
 }

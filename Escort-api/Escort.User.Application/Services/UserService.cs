@@ -14,7 +14,7 @@ public class UserService : IUserService
 
     public async Task<Domain.Models.User> CreateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails)
     {
-        var user = new Domain.Models.User(userDetails, userVerificationDetails);
+        var user = new Domain.Models.User();
         return await _userRepository.CreateAsync(user);
     }
     
@@ -30,7 +30,7 @@ public class UserService : IUserService
     
     public async Task<Domain.Models.User> UpdateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails)
     {
-        var user = new Domain.Models.User(userDetails, userVerificationDetails);
+        var user = new Domain.Models.User();
         return await _userRepository.UpdateAsync(user);
     }
     
