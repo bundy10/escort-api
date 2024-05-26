@@ -57,4 +57,21 @@ public class EventController : Controller
         }
     }
     
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<EventGetDTO>> DeleteEvent(int id)
+    {
+        {
+            try
+            {
+                var @event = await _eventRepository.DeleteAsync(id);
+                var eventGetDto = @event.ToDto();
+
+                return Ok(eventGetDto);
+            }
+            catch (ModelNotFoundException)
+            {
+                return NotFound();
+            }
+        }
+    }
 }

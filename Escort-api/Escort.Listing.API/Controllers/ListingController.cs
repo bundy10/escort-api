@@ -56,4 +56,10 @@ public class ListingController : Controller
             }
         }
     }
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<ListingGetDTO>> DeleteListing(int id)
+    {
+        var listing = await _listingRepository.DeleteAsync(id);
+        return Ok(listing.ToDto());
+    }
 }

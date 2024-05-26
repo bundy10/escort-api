@@ -56,4 +56,18 @@ public class ClientController : Controller
             }
         }
     }
+    
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> DeleteClient(int id)
+    {
+        try
+        {
+            await _clientRepository.DeleteAsync(id);
+            return NoContent();
+        }
+        catch (ModelNotFoundException)
+        {
+            return NotFound();
+        }
+    }
 }

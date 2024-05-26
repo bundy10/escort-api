@@ -57,4 +57,17 @@ public class DriverController : Controller
         }
     }
     
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeleteDriver(int id)
+    {
+        try
+        {
+            await _driverRepository.DeleteAsync(id);
+            return NoContent();
+        }
+        catch (ModelNotFoundException)
+        {
+            return NotFound();
+        }
+    }
 }
