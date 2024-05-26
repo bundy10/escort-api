@@ -14,7 +14,7 @@ public class EventService : IEventService
 
     public async Task<Domain.Models.Event> CreateAsync(EventDetails eventDetails)
     {
-        var eventT = new Domain.Models.Event(eventDetails);
+        var eventT = new Domain.Models.Event();
         return await _eventRepository.CreateAsync(eventT);
     }
     
@@ -23,18 +23,18 @@ public class EventService : IEventService
         return await _eventRepository.GetAllAsync();
     }
     
-    public async Task<Domain.Models.Event> GetByIdAsync(Guid id)
+    public async Task<Domain.Models.Event> GetByIdAsync(int id)
     {
         return await _eventRepository.GetByIdAsync(id);
     }
     
     public async Task<Domain.Models.Event> UpdateAsync(EventDetails eventDetails)
     {
-        var eventT = new Domain.Models.Event(eventDetails);
+        var eventT = new Domain.Models.Event();
         return await _eventRepository.UpdateAsync(eventT);
     }
     
-    public async Task<Domain.Models.Event> DeleteAsync(Guid id)
+    public async Task<Domain.Models.Event> DeleteAsync(int id)
     {
         return await _eventRepository.DeleteAsync(id);
     }

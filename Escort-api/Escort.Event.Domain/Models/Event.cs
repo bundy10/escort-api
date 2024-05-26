@@ -4,13 +4,4 @@ public class Event : BaseDomainModel
 {
     public EventDetails EventDetails { get; set; }
     public bool Completed { get; set; }
-    public Event(EventDetails eventDetails)
-    {
-        EventDetails = eventDetails;
-    }
-    public Event WithId()
-    {
-        this.Id = Guid.NewGuid();
-        return this;
-    }
 }

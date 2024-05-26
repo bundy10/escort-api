@@ -20,20 +20,7 @@ public class UserControllerTest
         _userController = new UserController(_userRepositoryMock.Object);
         _users = new List<Domain.Models.User>
         {
-            new Domain.Models.User(new UserContactDetails
-            {
-                FirstName = "John",
-                LastName = "Doe",
-                Email = "test@gmail.com",
-                PhoneNumber = "1234567890"
-            }, new UserVerificationDetails()),
-            new Domain.Models.User(new UserContactDetails
-            {
-                FirstName = "James",
-                LastName = "uncanny",
-                Email = "test2@gmail.com",
-                PhoneNumber = "1234567832"
-            }, new UserVerificationDetails())
+            new Domain.Models.User()
         };
     }
 
@@ -90,7 +77,7 @@ public class UserControllerTest
     [Fact]
     public async Task DeleteUser_ReturnsOkObjectResult_WhenUserExists()
     {
-        var id = Guid.NewGuid();
+        var id = 31;
         var user = _users.First();
         _userRepositoryMock.Setup(x => x.DeleteAsync(id)).ReturnsAsync(user);
         
@@ -105,25 +92,11 @@ public class UserControllerTest
     [Fact]
     public async Task DeleteUser_ReturnsNotFoundResult_WhenUserDoesNotExist()
     {
-        var id = Guid.NewGuid();
+        var id = 1;
         _userRepositoryMock.Setup(x => x.DeleteAsync(id)).Throws<ModelNotFoundException>();
         
         var result = await _userController.DeleteUser(id);
         
         Assert.IsType<NotFoundResult>(result.Result);
-    }
-    
-    [Fact]
-    public async Task GetUserWithListings_ReturnsOkObjectResult_WhenUserExists()
-    {
-        var id = Guid.NewGuid();
-        var user = _users.First();
-        _userRepositoryMock.Setup(x => x.GetUserWithListingsAsync(id)).ReturnsAsync(user);
-        
-        var result = await _userController.GetUserWithListings(id);
-        
-        var okObjectResult = Assert.IsType<OkObjectResult>(result);
-        var returnValue = Assert.IsType<UserGetDTO>(okObjectResult.Value);
-        Assert.Equal(user.Id, returnValue.Id);
     }
 }

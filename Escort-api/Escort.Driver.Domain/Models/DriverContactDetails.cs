@@ -14,10 +14,4 @@ public class DriverContactDetails : BaseDomainModel
         Email = email;
         PhoneNumber = phoneNumber;
     }
-    
-    public DriverContactDetails WithId()
-    {
-        this.Id = Guid.NewGuid();
-        return this;
-    }
 }

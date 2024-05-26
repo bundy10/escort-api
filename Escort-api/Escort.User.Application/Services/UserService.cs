@@ -14,7 +14,7 @@ public class UserService : IUserService
 
     public async Task<Domain.Models.User> CreateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails)
     {
-        var user = new Domain.Models.User(userDetails, userVerificationDetails);
+        var user = new Domain.Models.User();
         return await _userRepository.CreateAsync(user);
     }
     
@@ -23,24 +23,19 @@ public class UserService : IUserService
         return await _userRepository.GetAllAsync();
     }
     
-    public async Task<Domain.Models.User> GetUserByIdAsync(Guid id)
+    public async Task<Domain.Models.User> GetUserByIdAsync(int id)
     {
         return await _userRepository.GetByIdAsync(id);
     }
     
     public async Task<Domain.Models.User> UpdateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails)
     {
-        var user = new Domain.Models.User(userDetails, userVerificationDetails);
+        var user = new Domain.Models.User();
         return await _userRepository.UpdateAsync(user);
     }
     
-    public async Task<Domain.Models.User> DeleteUserAsync(Guid id)
+    public async Task<Domain.Models.User> DeleteUserAsync(int id)
     {
         return await _userRepository.DeleteAsync(id);
-    }
-    
-    public async Task<Domain.Models.User> GetUserWithListingsAsync(Guid userId)
-    {
-        return await _userRepository.GetUserWithListingsAsync(userId);
     }
 }
