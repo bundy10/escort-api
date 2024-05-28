@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Escort.Listing.Domain\Escort.Listing.Domain.csproj" />
     </ItemGroup>
 
 </Project>
