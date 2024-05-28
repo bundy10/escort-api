@@ -8,6 +8,9 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Escort.User.API/Escort.User.API.csproj", "Escort.User.API/"]
+COPY ["Escort.User.Application/Escort.User.API.csproj", "Escort.User.Application/"]
+COPY ["Escort.User.Domain/Escort.User.API.csproj", "Escort.User.Domain/"]
+COPY ["Escort.User.Infrastructure/Escort.User.API.csproj", "Escort.User.Infrastructure/"]
 RUN dotnet restore "Escort.User.API/Escort.User.API.csproj"
 COPY . .
 WORKDIR "/src/Escort.User.API"
