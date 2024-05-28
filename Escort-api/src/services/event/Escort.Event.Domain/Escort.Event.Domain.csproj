@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\client\Escort.Client.Domain\Escort.Client.Domain.csproj" />
+      <ProjectReference Include="..\..\driver\Escort.Driver.Domain\Escort.Driver.Domain.csproj" />
+      <ProjectReference Include="..\..\listing\Escort.Listing.Domain\Escort.Listing.Domain.csproj" />
+      <ProjectReference Include="..\..\user\Escort.User.Domain\Escort.User.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
