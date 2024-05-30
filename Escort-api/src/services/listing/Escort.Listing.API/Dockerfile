@@ -7,7 +7,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Escort.Listing.API/Escort.Listing.API.csproj", "Escort.Listing.API/"]
+COPY ["Escort.Listing.API/Escort.User.API.csproj", "Escort.User.API/"]
+COPY ["Escort.Listing.Application/Escort.User.API.csproj", "Escort.User.Application/"]
+COPY ["Escort.Listing.Domain/Escort.User.API.csproj", "Escort.User.Domain/"]
+COPY ["Escort.Listing.Infrastructure/Escort.User.API.csproj", "Escort.User.Infrastructure/"]
 RUN dotnet restore "Escort.Listing.API/Escort.Listing.API.csproj"
 COPY . .
 WORKDIR "/src/Escort.Listing.API"
