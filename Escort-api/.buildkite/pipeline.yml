@@ -3,6 +3,7 @@ steps:
     command:
       - dotnet build ./src/services/user/Escort.User.API/Escort.User.API.csproj -c Release
 
+
   - label: ":test_tube: Test"
     command:
-      - dotnet test ./src/services/user/Escort.User.API/Escort.User.API.csproj -c Release
+      - dotnet test ./Escort.Test/Escort.User.API.test.csproj -c Release
