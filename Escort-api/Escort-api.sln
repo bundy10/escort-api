@@ -50,7 +50,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Driver.API", "src\se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Client.API", "src\services\client\Escort.Client.API\Escort.Client.API.csproj", "{24FBA6CC-019D-4241-A74B-2E58BBF8037B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Test", "src\services\user\Escort.Test\Escort.Test.csproj", "{CBEFA5DB-6332-488D-A314-2D1275C4852D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Test", "Escort.Test\Escort.Test.csproj", "{CBEFA5DB-6332-488D-A314-2D1275C4852D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{DD315368-701D-4FAB-A03F-D5DB57B60C32}"
 EndProject

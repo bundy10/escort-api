@@ -23,7 +23,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Escort.User.API\Escort.User.API.csproj" />
+      <ProjectReference Include="..\src\services\user\Escort.User.API\Escort.User.API.csproj" />
+      <ProjectReference Include="..\src\services\user\Escort.User.Application\Escort.User.Application.csproj" />
     </ItemGroup>
 
     <ItemGroup>
