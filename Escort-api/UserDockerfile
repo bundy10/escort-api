@@ -1,8 +1,7 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -11,8 +10,13 @@ COPY ["/src/services/user/Escort.User.API/Escort.User.API.csproj", "Escort.User.
 COPY ["/src/services/user/Escort.User.Application/Escort.User.Application.csproj", "Escort.User.Application/"]
 COPY ["/src/services/user/Escort.User.Domain/Escort.User.Domain.csproj", "Escort.User.Domain/"]
 COPY ["/src/services/user/Escort.User.Infrastructure/Escort.User.Infrastructure.csproj", "Escort.User.Infrastructure/"]
+
+COPY /src/services/user/Escort.User.API/. Escort.User.API/
+COPY /src/services/user/Escort.User.Application/. Escort.User.Application/
+COPY /src/services/user/Escort.User.Domain/. Escort.User.Domain/
+COPY /src/services/user/Escort.User.Infrastructure/. Escort.User.Infrastructure/
+
 RUN dotnet restore "Escort.User.API/Escort.User.API.csproj"
-COPY . .
 WORKDIR "/src/Escort.User.API"
 RUN dotnet build "Escort.User.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
