@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Escort-api",
+    "\\Escort-api\\src",
+    "\\Escort-api\\src\\services",
+    "\\Escort-api\\src\\services\\driver",
+    "\\Escort-api\\src\\services\\driver\\Escort.Driver.API",
+    "\\Escort-api\\src\\services\\driver\\Escort.Driver.API\\Controllers",
+    "\\Escort-api\\src\\services\\event",
+    "\\Escort-api\\src\\services\\event\\Escort.Event.API"
+  ],
+  "SelectedNode": "\\Escort-api\\src\\services\\event\\Escort.Event.API\\Properties",
+  "PreviewInSolutionExplorer": false
+}

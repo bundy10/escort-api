@@ -1,8 +1,7 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -11,6 +10,11 @@ COPY ["/src/services/client/Escort.Client.API/Escort.Client.API.csproj", "Escort
 COPY ["/src/services/client/Escort.Client.Application/Escort.Client.Application.csproj", "Escort.Client.Application/"]
 COPY ["/src/services/client/Escort.Client.Domain/Escort.Client.Domain.csproj", "Escort.Client.Domain/"]
 COPY ["/src/services/client/Escort.Client.Infrastructure/Escort.Client.Infrastructure.csproj", "Escort.Client.Infrastructure/"]
+
+COPY /src/services/client/Escort.Client.API/. Escort.Client.API/
+COPY /src/services/client/Escort.Client.Application/. Escort.Client.Application/
+COPY /src/services/client/Escort.Client.Domain/. Escort.Client.Domain/
+COPY /src/services/client/Escort.Client.Infrastructure/. Escort.Client.Infrastructure/
 
 # Install curl, ca-certificates, and apt-utils
 RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates

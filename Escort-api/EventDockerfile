@@ -1,8 +1,7 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -11,6 +10,15 @@ COPY ["/src/services/event/Escort.Event.API/Escort.Event.API.csproj", "Escort.Ev
 COPY ["/src/services/event/Escort.Event.Application/Escort.Event.Application.csproj", "Escort.Event.Application/"]
 COPY ["/src/services/event/Escort.Event.Domain/Escort.Event.Domain.csproj", "Escort.Event.Domain/"]
 COPY ["/src/services/event/Escort.Event.Infrastructure/Escort.Event.Infrastructure.csproj", "Escort.Event.Infrastructure/"]
+
+COPY /src/services/event/Escort.Event.API/. Escort.Event.API/
+COPY /src/services/event/Escort.Event.Application/. Escort.Event.Application/
+COPY /src/services/event/Escort.Event.Domain/. Escort.Event.Domain/
+COPY /src/services/event/Escort.Event.Infrastructure/. Escort.Event.Infrastructure/
+
+# Install curl, ca-certificates, and apt-utils
+RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates
+
 RUN dotnet restore "Escort.Event.API/Escort.Event.API.csproj"
 COPY . .
 WORKDIR "/src/Escort.Event.API"

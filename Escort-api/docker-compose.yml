@@ -1,32 +1,31 @@
-version: '3.8'
 services:
   escort.user.api:
     build:
-      context: ./src/services/user/Escort.User.API
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: UserDockerfile
     ports:
       - 8080:8080
   escort.client.api:
     build:
-      context: ./src/services/client/Escort.Client.API
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ClientDockerfile
     ports:
       - 8081:8081
-  escort.service3:
+  escort.driver.api:
     build:
-      context: ./src/services/driver/Escort.driver.API
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: DriverDockerfile
     ports:
       - 8082:8082
-  escort.service4:
+  escort.listing.api:
     build:
-      context: ./src/services/event/Escort.event.API
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ListingDockerfile
     ports:
       - 8083:8083
-  escort.service5:
+  escort.event.api:
     build:
-      context: ./src/services/listing/Escort.listing.API
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: EventDockerfile
     ports:
       - 8084:8084

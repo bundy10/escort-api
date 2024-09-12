@@ -1,8 +1,7 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -11,6 +10,15 @@ COPY ["/src/services/listing/Escort.Listing.API/Escort.Listing.API.csproj", "Esc
 COPY ["/src/services/listing/Escort.Listing.Application/Escort.Listing.Application.csproj", "Escort.Listing.Application/"]
 COPY ["/src/services/listing/Escort.Listing.Domain/Escort.Listing.Domain.csproj", "Escort.Listing.Domain/"]
 COPY ["/src/services/listing/Escort.Listing.Infrastructure/Escort.Listing.Infrastructure.csproj", "Escort.Listing.Infrastructure/"]
+
+COPY /src/services/listing/Escort.Listing.API/. Escort.Listing.API/
+COPY /src/services/listing/Escort.Listing.Application/. Escort.Listing.Application/
+COPY /src/services/listing/Escort.Listing.Domain/. Escort.Listing.Domain/
+COPY /src/services/listing/Escort.Listing.Infrastructure/. Escort.Listing.Infrastructure/
+
+# Install curl, ca-certificates, and apt-utils
+RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates
+
 RUN dotnet restore "Escort.Listing.API/Escort.Listing.API.csproj"
 COPY . .
 WORKDIR "/src/Escort.Listing.API"
