@@ -1,27 +1,18 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["/src/services/event/Escort.Event.API/Escort.Event.API.csproj", "Escort.Event.API/"]
-COPY ["/src/services/event/Escort.Event.Application/Escort.Event.Application.csproj", "Escort.Event.Application/"]
-COPY ["/src/services/event/Escort.Event.Domain/Escort.Event.Domain.csproj", "Escort.Event.Domain/"]
-COPY ["/src/services/event/Escort.Event.Infrastructure/Escort.Event.Infrastructure.csproj", "Escort.Event.Infrastructure/"]
 
-COPY /src/services/event/Escort.Event.API/. Escort.Event.API/
-COPY /src/services/event/Escort.Event.Application/. Escort.Event.Application/
-COPY /src/services/event/Escort.Event.Domain/. Escort.Event.Domain/
-COPY /src/services/event/Escort.Event.Infrastructure/. Escort.Event.Infrastructure/
+COPY /src /src
 
-# Install curl, ca-certificates, and apt-utils
 RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates
 
-RUN dotnet restore "Escort.Event.API/Escort.Event.API.csproj"
-COPY . .
-WORKDIR "/src/Escort.Event.API"
+WORKDIR "/src/services/event/Escort.Event.API"
+RUN dotnet restore "Escort.Event.API.csproj"
+
 RUN dotnet build "Escort.Event.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
@@ -32,3 +23,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Escort.Event.API.dll"]
+CMD ["dotnet", "Escort.Event.API.dll"]

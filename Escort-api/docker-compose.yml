@@ -3,29 +3,39 @@ services:
     build:
       context: .
       dockerfile: UserDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - 8080:8080
+      - "8080:8080"
   escort.client.api:
     build:
       context: .
       dockerfile: ClientDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - 8081:8081
+      - "8081:8080"
   escort.driver.api:
     build:
       context: .
       dockerfile: DriverDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - 8082:8082
+      - "8082:8080"
   escort.listing.api:
     build:
       context: .
       dockerfile: ListingDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - 8083:8083
+      - "8083:8080"
   escort.event.api:
     build:
       context: .
       dockerfile: EventDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - 8084:8084
+      - "8084:8080"
