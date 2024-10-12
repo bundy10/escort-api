@@ -25,7 +25,7 @@ namespace Escort.Client.API
             builder.Services.AddScoped<DbContext, ClientDbContext>();
             builder.Services.AddDbContext<ClientDbContext>(options =>
             {
-                options.UseInMemoryDatabase("EscortDatabase");
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
             var app = builder.Build();
