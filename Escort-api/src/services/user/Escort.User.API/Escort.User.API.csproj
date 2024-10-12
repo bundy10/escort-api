@@ -11,8 +11,9 @@
     <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.4.24267.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.0-preview.4.24267.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-rc.2.24474.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.0-rc.2.24474.1" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0-rc.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     </ItemGroup>
 
