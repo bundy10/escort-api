@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS CloudFormation Template to create an RDS PostgreSQL instance within the free tier
+
+Parameters:
+  DBInstanceIdentifier:
+    Description: The database instance identifier
+    Type: String
+    Default: MyPostgresDB
+  DBName:
+    Description: The name of the database
+    Type: String
+    Default: EscortDB
+  DBUsername:
+    Description: The database admin account username
+    Type: String
+    Default: admin
+  DBPassword:
+    Description: The database admin account password
+    Type: String
+  DBInstanceClass:
+    Description: The database instance class
+    Type: String
+    Default: db.t3.micro
+  AllocatedStorage:
+    Description: The size of the database (Gb)
+    Type: Number
+    Default: 20
+  VPCSecurityGroupIds:
+    Description: The VPC security group IDs
+    Type: List<AWS::EC2::SecurityGroup::Id>
+  SubnetIds:
+    Description: The subnet IDs for the RDS instance
+    Type: List<AWS::EC2::Subnet::Id>
+
+Resources:
+  MyDBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: !Ref DBInstanceIdentifier
+      DBName: !Ref DBName
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      DBInstanceClass: !Ref DBInstanceClass
+      AllocatedStorage: !Ref AllocatedStorage
+      Engine: postgres
+      VPCSecurityGroups: !Ref VPCSecurityGroupIds
+      DBSubnetGroupName: !Ref DBSubnetGroup
+
+  DBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnet group for RDS instance
+      SubnetIds: !Ref SubnetIds
+
+Outputs:
+  DBEndpoint:
+    Description: The connection endpoint for the RDS instance
+    Value: !GetAtt MyDBInstance.Endpoint.Address
+  DBPort:
+    Description: The connection port for the RDS instance
+    Value: !GetAtt MyDBInstance.Endpoint.Port
