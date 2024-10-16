@@ -26,7 +26,8 @@ namespace Escort.User.API
             builder.Services.AddScoped<DbContext, UserDbContext>();
             builder.Services.AddDbContext<UserDbContext>(options =>
             {
-                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("Escort.User.Infrastructure"));
             });
 
             var app = builder.Build();
