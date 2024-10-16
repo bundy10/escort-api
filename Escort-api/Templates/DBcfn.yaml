@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: AWS CloudFormation Template to create an RDS PostgreSQL instance within the free tier
+Description: AWS CloudFormation Template to create an RDS PostgreSQL instance
 
 Parameters:
   DBInstanceIdentifier:
@@ -13,7 +13,6 @@ Parameters:
   DBUsername:
     Description: The database admin account username
     Type: String
-    Default: admin
   DBPassword:
     Description: The database admin account password
     Type: String

@@ -1,0 +1,20 @@
+{
+  "Parameters": [
+    {
+      "ParameterKey": "VPCSecurityGroupIds",
+      "ParameterValue": "sg-0769a3b173317cfad"
+    },
+    {
+      "ParameterKey": "SubnetIds",
+      "ParameterValue": "subnet-07fad2cecfed47e41,subnet-02971ddd4fc992040"
+    },
+    {
+      "ParameterKey": "DBUsername",
+      "ParameterValue": ""
+    },
+    {
+      "ParameterKey": "DBPassword",
+      "ParameterValue": ""
+    }
+  ]
+}
