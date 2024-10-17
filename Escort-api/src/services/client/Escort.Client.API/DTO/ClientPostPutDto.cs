@@ -6,5 +6,5 @@ public class ClientPostPutDto
 {
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
-    public ClientContactDetails ClientContactDetails { get; set; }
+    public required ClientContactDetails ClientContactDetails { get; set; }
 }
