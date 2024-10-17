@@ -7,6 +7,8 @@ public static class DriverMapper
         return new DriverGetDTO
         {
             Id = driver.Id,
+            FirstName = driver.FirstName,
+            LastName = driver.LastName,
             DriverContactDetails = driver.DriverContactDetails
         };
     }
@@ -15,6 +17,8 @@ public static class DriverMapper
     {
         return new Domain.Models.Driver()
         {
+            FirstName = driverDto.FirstName,
+            LastName = driverDto.LastName,
             DriverContactDetails = driverDto.DriverContactDetails
         };
     }

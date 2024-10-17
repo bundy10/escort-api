@@ -12,9 +12,14 @@ public class DriverService : IDriverService
         _driverRepository = driverRepository;
     }
     
-    public async Task<Domain.Models.Driver> CreateDriverAsync(DriverContactDetails driverContactDetails)
+    public async Task<Domain.Models.Driver> CreateDriverAsync(DriverContactDetails driverContactDetails, string firstName, string lastName)
     {
-        var driver = new Driver.Domain.Models.Driver();
+        var driver = new Domain.Models.Driver()
+        {
+            FirstName = firstName,
+            LastName = lastName,
+            DriverContactDetails = driverContactDetails
+        };
         return await _driverRepository.CreateAsync(driver);
     }
     
@@ -28,9 +33,14 @@ public class DriverService : IDriverService
         return await _driverRepository.GetByIdAsync(id);
     }
     
-    public async Task<Domain.Models.Driver> UpdateDriverAsync(DriverContactDetails driverContactDetails)
+    public async Task<Domain.Models.Driver> UpdateDriverAsync(DriverContactDetails driverContactDetails, string firstName, string lastName)
     {
-        var driver = new Domain.Models.Driver();
+        var driver = new Domain.Models.Driver()
+        {
+            FirstName = firstName,
+            LastName = lastName,
+            DriverContactDetails = driverContactDetails
+        };
         return await _driverRepository.UpdateAsync(driver);
     }
     
