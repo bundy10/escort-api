@@ -7,7 +7,9 @@ public static class ClientMapper
         return new ClientGetDTO
         {
             Id = client.Id,
-            ClientContactDetails = client.ClientContactDetails
+            ClientContactDetails = client.ClientContactDetails,
+            FirstName = client.FirstName,
+            LastName = client.LastName
         };
     }
     
@@ -15,6 +17,8 @@ public static class ClientMapper
     {
         return new Domain.Models.Client()
         {
+            FirstName = clientDto.FirstName,
+            LastName = clientDto.LastName,
             ClientContactDetails = clientDto.ClientContactDetails
         };
     }
