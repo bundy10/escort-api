@@ -20,7 +20,17 @@ public class UserControllerTest
         _userController = new UserController(_userRepositoryMock.Object);
         _users = new List<Domain.Models.User>
         {
-            new Domain.Models.User()
+            new Domain.Models.User
+            {
+                Id = 1,
+                FirstName = "John",
+                LastName = "Doe",
+                UserContactDetails = new Domain.Models.UserContactDetails
+                {
+                    Email = "adasd@example.com",
+                    PhoneNumber = "1234567890"
+                }
+            }
         };
     }
 
