@@ -13,9 +13,14 @@ public class ListingService : IListingService
         _listingRepository = listingRepository;
     }
     
-    public async Task<Domain.Models.Listing> CreateAsync(ListingDetails listingDetails, int userId)
+    public async Task<Domain.Models.Listing> CreateAsync(ListingDetails listingDetails, int userId, bool listed)
     {
-        var listing = new Domain.Models.Listing();
+        var listing = new Domain.Models.Listing
+        {
+            ListingDetails = listingDetails,
+            UserId = userId,
+            Listed = listed
+        };
         return await _listingRepository.CreateAsync(listing);
     }
     
@@ -29,9 +34,14 @@ public class ListingService : IListingService
         return await _listingRepository.GetByIdAsync(id);
     }
     
-    public async Task<Domain.Models.Listing> UpdateAsync(ListingDetails listingDetails, int userId)
+    public async Task<Domain.Models.Listing> UpdateAsync(ListingDetails listingDetails, int userId, bool listed)
     {
-        var listing = new Domain.Models.Listing();
+        var listing = new Domain.Models.Listing
+        {
+            Listed = listed,
+            ListingDetails = listingDetails,
+            UserId = userId
+        };
         return await _listingRepository.UpdateAsync(listing);
     }
     

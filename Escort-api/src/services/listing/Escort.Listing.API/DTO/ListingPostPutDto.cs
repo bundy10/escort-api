@@ -4,7 +4,7 @@ namespace Escort.Listing.API.DTO;
 
 public class ListingPostPutDto
 {
-    public bool Listed { get; set; }
-    public ListingDetails ListingDetails { get; set; }
-    public int UserId { get; set; }
+    public required bool Listed { get; set; }
+    public required ListingDetails ListingDetails { get; set; }
+    public required int UserId { get; set; }
 }
