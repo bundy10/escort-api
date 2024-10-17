@@ -26,7 +26,8 @@ namespace Escort.Event.API
             builder.Services.AddScoped<DbContext, EventDbContext>();
             builder.Services.AddDbContext<EventDbContext>(options =>
             {
-                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("Escort.Event.Infrastructure"));
             });
 
             var app = builder.Build();
