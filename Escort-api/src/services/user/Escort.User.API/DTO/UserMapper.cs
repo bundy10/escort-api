@@ -9,6 +9,8 @@ public static class UserMapper
         return new UserGetDTO()
         {
             Id = user.Id,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
             UserContactDetails = user.UserContactDetails,
             UserVerificationDetails = user.UserVerificationDetails,
         };
@@ -18,6 +20,8 @@ public static class UserMapper
     {
         return new Domain.Models.User()
         {
+            FirstName = userPostPutDto.FirstName,
+            LastName = userPostPutDto.LastName,
             UserContactDetails = userPostPutDto.UserContactDetails,
             UserVerificationDetails = userPostPutDto.UserVerificationDetails ?? new UserVerificationDetails()
         };

@@ -2,6 +2,7 @@ namespace Escort.User.Domain.Models;
 
 public class UserVerificationDetails : BaseDomainModel
 {
+    public int UserId { get; set; }
     public string? DriversLicenseNumber { get; set; }
     public string? PassportNumber { get; set; }
     public string? Abn { get; set; }
