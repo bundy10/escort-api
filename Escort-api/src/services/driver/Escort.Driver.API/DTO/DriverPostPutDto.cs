@@ -6,5 +6,5 @@ public class DriverPostPutDto
 {
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
-    public DriverContactDetails DriverContactDetails { get; set; }
+    public required DriverContactDetails DriverContactDetails { get; set; }
 }

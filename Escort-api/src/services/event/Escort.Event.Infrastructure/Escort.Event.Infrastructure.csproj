@@ -21,4 +21,8 @@
       <ProjectReference Include="..\Escort.Event.Domain\Escort.Event.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+    </ItemGroup>
+
 </Project>
