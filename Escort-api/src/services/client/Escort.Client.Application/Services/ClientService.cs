@@ -21,15 +21,25 @@ public class ClientService : IClientService
         return await _clientRepository.GetByIdAsync(id);
     }
 
-    public async Task<Domain.Models.Client> CreateClientAsync(Domain.Models.ClientContactDetails clientContactDetails)
+    public async Task<Domain.Models.Client> CreateClientAsync(Domain.Models.ClientContactDetails clientContactDetails, string firstName, string lastName)
     {
-        var client = new Domain.Models.Client();
+        var client = new Domain.Models.Client()
+        {
+            ClientContactDetails = clientContactDetails,
+            FirstName = firstName,
+            LastName = lastName
+        };
         return await _clientRepository.CreateAsync(client);
     }
 
-    public async Task<Domain.Models.Client> UpdateClientAsync(Domain.Models.ClientContactDetails clientContactDetails)
+    public async Task<Domain.Models.Client> UpdateClientAsync(Domain.Models.ClientContactDetails clientContactDetails, string firstName, string lastName)
     {
-        var client = new Domain.Models.Client();
+        var client = new Domain.Models.Client()
+        {
+            ClientContactDetails = clientContactDetails,
+            FirstName = firstName,
+            LastName = lastName
+        };
         return await _clientRepository.UpdateAsync(client);
     }
 
