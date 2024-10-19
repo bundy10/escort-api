@@ -1,5 +1,6 @@
 using Escort.User.API.DTO;
 using Escort.User.Application.Repositories;
+using Escort.User.Application.Services;
 using Escort.User.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,31 +10,31 @@ namespace Escort.User.API.Controllers;
 [Route("api/[controller]")]
 public class UserController : Controller
 {
-    private readonly IUserRepository _userRepository;
+    private readonly IUserService _userService;
     
-    public UserController(IUserRepository userRepository)
+    public UserController(IUserService userService)
     {
-        _userRepository = userRepository;
+        _userService = userService;
     }
     
     [HttpGet]
     public async Task<IActionResult> GetAllUsers()
     {
-        var users = await _userRepository.GetAllAsync();
+        var users = await _userService.GetAllUsersAsync();
         return Ok(users.Select(user => user.ToDto()));
     }
     
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetUserById(int id)
     {
-        var user = await _userRepository.GetByIdAsync(id);
+        var user = await _userService.GetUserByIdAsync(id);
         return Ok(user.ToDto());
     }
     
     [HttpPost]
     public async Task<ActionResult<IEnumerable<UserGetDTO>>> CreateUser(UserPostPutDto userPostPutDto)
     {
-        var user = await _userRepository.CreateAsync(userPostPutDto.ToDomain());
+        var user = await _userService.CreateUserAsync(userPostPutDto.ToDomain());
         return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user.ToDto());
     }
     
@@ -45,7 +46,7 @@ public class UserController : Controller
             {
                 var user = userPostPutDto.ToDomain();
                 user.Id = id;
-                await _userRepository.UpdateAsync(user);
+                await _userService.UpdateUserAsync(user);
                 var userGetDto = user.ToDto();
 
                 return Ok(userGetDto);
@@ -56,13 +57,13 @@ public class UserController : Controller
             }
         }
     }
-    [HttpPost("authenticate")]
+    [HttpPost("authenticate/login")]
     public async Task<IActionResult> Login([FromBody] UserLoginDto userLoginDto)
     {
-        var user = await _userRepository.AuthenticateUserLoginAttempt(userLoginDto.Username, userLoginDto.Password);
+        var user = await _userService.AuthenticateUserLoginAttempt(userLoginDto.Username, userLoginDto.Password);
         if (user != null)
         {
-            return Ok();
+            return Ok(user.Id);
         }
         return Unauthorized();
     }
@@ -72,7 +73,7 @@ public class UserController : Controller
     {
         try
         {
-            var user = await _userRepository.DeleteAsync(id);
+            var user = await _userService.DeleteUserAsync(id);
             return Ok(user.ToDto());
         }
         catch (ModelNotFoundException)
