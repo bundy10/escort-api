@@ -12,14 +12,16 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public async Task<Domain.Models.User> CreateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails, string firstName, string lastName)
+    public async Task<Domain.Models.User> CreateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails, string firstName, string lastName, string userName, string password)
     {
         var user = new Domain.Models.User
         {
             UserContactDetails = userDetails,
             UserVerificationDetails = userVerificationDetails,
             FirstName = firstName,
-            LastName = lastName
+            LastName = lastName,
+            UserName = userName,
+            Password = password
         };
         return await _userRepository.CreateAsync(user);
     }
@@ -34,14 +36,16 @@ public class UserService : IUserService
         return await _userRepository.GetByIdAsync(id);
     }
     
-    public async Task<Domain.Models.User> UpdateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails, string firstName, string lastName)
+    public async Task<Domain.Models.User> UpdateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails, string firstName, string lastName, string userName, string password)
     {
         var user = new Domain.Models.User
         {
             UserContactDetails = userDetails,
             UserVerificationDetails = userVerificationDetails,
             FirstName = firstName,
-            LastName = lastName
+            LastName = lastName,
+            UserName = userName,
+            Password = password
         };
         return await _userRepository.UpdateAsync(user);
     }

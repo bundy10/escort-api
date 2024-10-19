@@ -13,6 +13,8 @@ public static class UserMapper
             LastName = user.LastName,
             UserContactDetails = user.UserContactDetails,
             UserVerificationDetails = user.UserVerificationDetails,
+            UserName = user.UserName,
+            Password = user.Password
         };
         
     }
@@ -22,6 +24,8 @@ public static class UserMapper
         {
             FirstName = userPostPutDto.FirstName,
             LastName = userPostPutDto.LastName,
+            UserName = userPostPutDto.UserName,
+            Password = userPostPutDto.Password,
             UserContactDetails = userPostPutDto.UserContactDetails,
             UserVerificationDetails = userPostPutDto.UserVerificationDetails ?? new UserVerificationDetails()
         };
