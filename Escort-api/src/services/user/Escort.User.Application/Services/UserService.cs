@@ -12,17 +12,8 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public async Task<Domain.Models.User> CreateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails, string firstName, string lastName, string userName, string password)
+    public async Task<Domain.Models.User> CreateUserAsync(Domain.Models.User user)
     {
-        var user = new Domain.Models.User
-        {
-            UserContactDetails = userDetails,
-            UserVerificationDetails = userVerificationDetails,
-            FirstName = firstName,
-            LastName = lastName,
-            UserName = userName,
-            Password = password
-        };
         return await _userRepository.CreateAsync(user);
     }
     
@@ -36,25 +27,14 @@ public class UserService : IUserService
         return await _userRepository.GetByIdAsync(id);
     }
     
-    public async Task<Domain.Models.User> UpdateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails, string firstName, string lastName, string userName, string password)
+    public async Task<Domain.Models.User> UpdateUserAsync(Domain.Models.User user)
     {
-        var user = new Domain.Models.User
-        {
-            UserContactDetails = userDetails,
-            UserVerificationDetails = userVerificationDetails,
-            FirstName = firstName,
-            LastName = lastName,
-            UserName = userName,
-            Password = password
-        };
         return await _userRepository.UpdateAsync(user);
     }
     
     public async Task<Domain.Models.User?> AuthenticateUserLoginAttempt(string username, string password)
     {
-        var users = await _userRepository.GetAllAsync();
-        users = users.Where(user => user.UserName == username && user.UserVerificationDetails.Password == password);
-        return null;
+        return await _userRepository.AuthenticateUserLoginAttempt(username, password);
     }
     
     
