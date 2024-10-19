@@ -9,5 +9,5 @@ public interface IRepository<TEntity> where TEntity : BaseDomainModel
     Task<TEntity> CreateAsync(TEntity entity);
     Task<TEntity> UpdateAsync(TEntity entity);
     Task<TEntity> DeleteAsync(int id);
-    Task AuthenticateUserLoginAttempt(string username, string password);
+    Task <TEntity?>AuthenticateUserLoginAttempt(string username, string password);
 }
