@@ -16,7 +16,15 @@ namespace Escort.Client.API
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    corsPolicyBuilder => corsPolicyBuilder.WithOrigins("http://localhost:8085")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
+            
             // repo/services
             builder.Services.AddScoped<IClientRepository, ClientRepository>();
             builder.Services.AddScoped<IClientService, ClientService>();
@@ -41,7 +49,8 @@ namespace Escort.Client.API
 
             app.UseHttpsRedirection();
             app.UseRouting();
-
+            app.UseCors("AllowSpecificOrigin");
+            app.UseAuthorization();
             app.MapControllers();
 
             app.Run();
