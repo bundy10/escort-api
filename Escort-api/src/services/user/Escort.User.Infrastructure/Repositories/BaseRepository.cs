@@ -7,7 +7,7 @@ namespace Escort.User.Infrastructure.Repositories;
 public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : BaseDomainModel
 {
     private readonly DbContext _context;
-    protected readonly DbSet<TEntity> _entities;
+    private readonly DbSet<TEntity> _entities;
 
     public BaseRepository(DbContext context)
     {
@@ -61,5 +61,12 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         _entities.Remove(entityToDelete);
         await _context.SaveChangesAsync();
         return entityToDelete;
+    }
+
+    public async Task<TEntity?> AuthenticateUserLoginAttempt(string username, string password)
+    {
+        return await _entities
+            .AsNoTracking()
+            .FirstOrDefaultAsync(user => user.UserName == username && user.Password == password);
     }
 }

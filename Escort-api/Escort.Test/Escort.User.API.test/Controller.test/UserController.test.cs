@@ -1,6 +1,7 @@
 using Escort.User.API.Controllers;
 using Escort.User.API.DTO;
 using Escort.User.Application.Repositories;
+using Escort.User.Application.Services;
 using Escort.User.Domain.Models;
 using Escort.User.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
@@ -10,13 +11,13 @@ namespace Escort.User.Test.Escort.User.API.test.Controller.test;
 
 public class UserControllerTest
 {
-    private Mock<IUserRepository> _userRepositoryMock;
+    private Mock<IUserService> _userRepositoryMock;
     private UserController _userController;
     private List<Domain.Models.User> _users;
 
     public UserControllerTest()
     {
-        _userRepositoryMock = new Mock<IUserRepository>();
+        _userRepositoryMock = new Mock<IUserService>();
         _userController = new UserController(_userRepositoryMock.Object);
         _users = new List<Domain.Models.User>
         {
@@ -27,9 +28,13 @@ public class UserControllerTest
                 LastName = "Doe",
                 UserContactDetails = new Domain.Models.UserContactDetails
                 {
+                    Password = "asd",
+                    UserName = "asd",
                     Email = "adasd@example.com",
                     PhoneNumber = "1234567890"
-                }
+                },
+                UserName = null,
+                Password = null
             }
         };
     }
@@ -37,7 +42,7 @@ public class UserControllerTest
     [Fact]
     public async Task GetAllUsers_ReturnsOkObjectResult()
     {
-        _userRepositoryMock.Setup(x => x.GetAllAsync()).ReturnsAsync(_users);
+        _userRepositoryMock.Setup(x => x.GetAllUsersAsync()).ReturnsAsync(_users);
         var result = await _userController.GetAllUsers();
         Assert.IsType<OkObjectResult>(result);
         var okObjectResult = result as OkObjectResult;
@@ -48,7 +53,7 @@ public class UserControllerTest
     public async Task GetUserById_ReturnsOkObjectResult()
     {
         var user = _users.First();
-        _userRepositoryMock.Setup(x => x.GetByIdAsync(user.Id)).ReturnsAsync(user);
+        _userRepositoryMock.Setup(x => x.GetUserByIdAsync(user.Id)).ReturnsAsync(user);
         var result = await _userController.GetUserById(user.Id);
         Assert.IsType<OkObjectResult>(result);
         var okObjectResult = result as OkObjectResult;
@@ -60,7 +65,7 @@ public class UserControllerTest
     {
         var user = _users.First();
         var userPostPutDto = user.ToDto();
-        _userRepositoryMock.Setup(x => x.CreateAsync(It.IsAny<Domain.Models.User>())).ReturnsAsync(user);
+        _userRepositoryMock.Setup(x => x.CreateUserAsync(It.IsAny<Domain.Models.User>())).ReturnsAsync(user);
         
         var result = await _userController.CreateUser(userPostPutDto);
         
@@ -74,7 +79,7 @@ public class UserControllerTest
     {
         var user = _users.First();
         var userPostPutDto = user.ToDto();
-        _userRepositoryMock.Setup(x => x.UpdateAsync(It.IsAny<Domain.Models.User>())).ReturnsAsync(user);
+        _userRepositoryMock.Setup(x => x.UpdateUserAsync(It.IsAny<Domain.Models.User>())).ReturnsAsync(user);
         
         var result = await _userController.UpdateUser(user.Id, userPostPutDto);
         
@@ -89,7 +94,7 @@ public class UserControllerTest
     {
         var id = 31;
         var user = _users.First();
-        _userRepositoryMock.Setup(x => x.DeleteAsync(id)).ReturnsAsync(user);
+        _userRepositoryMock.Setup(x => x.DeleteUserAsync(id)).ReturnsAsync(user);
         
         var result = await _userController.DeleteUser(id);
         
@@ -103,7 +108,7 @@ public class UserControllerTest
     public async Task DeleteUser_ReturnsNotFoundResult_WhenUserDoesNotExist()
     {
         var id = 1;
-        _userRepositoryMock.Setup(x => x.DeleteAsync(id)).Throws<ModelNotFoundException>();
+        _userRepositoryMock.Setup(x => x.DeleteUserAsync(id)).Throws<ModelNotFoundException>();
         
         var result = await _userController.DeleteUser(id);
         
