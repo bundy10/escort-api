@@ -9,4 +9,5 @@ public interface IUserService
     Task<Domain.Models.User> GetUserByIdAsync(int id);
     Task<Domain.Models.User> UpdateUserAsync(UserContactDetails userDetails, UserVerificationDetails userVerificationDetails, string firstName, string lastName);
     Task<Domain.Models.User> DeleteUserAsync(int id);
+    Task<Domain.Models.User?> AuthenticateUserLoginAttempt(string username, string password);
 }

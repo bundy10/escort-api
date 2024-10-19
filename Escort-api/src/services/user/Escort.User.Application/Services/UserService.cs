@@ -46,6 +46,14 @@ public class UserService : IUserService
         return await _userRepository.UpdateAsync(user);
     }
     
+    public async Task<Domain.Models.User?> AuthenticateUserLoginAttempt(string username, string password)
+    {
+        var users = await _userRepository.GetAllAsync();
+        users = users.Where(user => user.UserName == username && user.UserVerificationDetails.Password == password);
+        return null;
+    }
+    
+    
     public async Task<Domain.Models.User> DeleteUserAsync(int id)
     {
         return await _userRepository.DeleteAsync(id);

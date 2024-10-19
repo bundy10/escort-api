@@ -56,6 +56,16 @@ public class UserController : Controller
             }
         }
     }
+    [HttpPost("authenticate")]
+    public async Task<IActionResult> Login([FromBody] UserLoginDto userLoginDto)
+    {
+        var user = await _userRepository.AuthenticateUserLoginAttempt(userLoginDto.Username, userLoginDto.Password);
+        if (user != null)
+        {
+            return Ok();
+        }
+        return Unauthorized();
+    }
     
     [HttpDelete("{id:int}")]
     public async Task<ActionResult<UserGetDTO>> DeleteUser(int id)
