@@ -28,8 +28,6 @@ public class UserControllerTest
                 LastName = "Doe",
                 UserContactDetails = new Domain.Models.UserContactDetails
                 {
-                    Password = "asd",
-                    UserName = "asd",
                     Email = "adasd@example.com",
                     PhoneNumber = "1234567890"
                 },

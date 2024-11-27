@@ -63,9 +63,15 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         return entityToDelete;
     }
 
-    public async Task<TEntity?> AuthenticateUserLoginAttempt(string username, string password)
+    public async Task<Domain.Models.User?> AuthenticateUserLoginAttempt(string username, string password)
     {
+        if (typeof(TEntity) != typeof(Domain.Models.User))
+        {
+            throw new InvalidOperationException("TEntity must be of type User to authenticate login attempt.");
+        }
+
         return await _entities
+            .OfType<Domain.Models.User>()
             .AsNoTracking()
             .FirstOrDefaultAsync(user => user.UserName == username && user.Password == password);
     }
