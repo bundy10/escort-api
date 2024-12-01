@@ -30,61 +30,37 @@ namespace Escort.Event.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Completed")
-                        .HasColumnType("boolean");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("Escort.Event.Domain.Models.EventDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("BookingTime")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
 
                     b.Property<int?>("DriverId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time without time zone");
 
                     b.Property<int>("ListingId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time without time zone");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.ToTable("EventDetails");
-                });
-
-            modelBuilder.Entity("Escort.Event.Domain.Models.EventDetails", b =>
-                {
-                    b.HasOne("Escort.Event.Domain.Models.Event", null)
-                        .WithOne("EventDetails")
-                        .HasForeignKey("Escort.Event.Domain.Models.EventDetails", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Escort.Event.Domain.Models.Event", b =>
-                {
-                    b.Navigation("EventDetails")
-                        .IsRequired();
+                    b.ToTable("Events");
                 });
 #pragma warning restore 612, 618
         }
