@@ -1,5 +1,6 @@
 using Escort.Event.API.DTO;
 using Escort.Event.Application.Repositories;
+using Escort.Event.Application.Services;
 using Escort.Event.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,31 +10,31 @@ namespace Escort.Event.API.Controllers;
 [Route("api/[controller]")]
 public class EventController : Controller
 {
-    private readonly IEventRepository _eventRepository;
+    private readonly IEventService _eventService;
     
-    public EventController(IEventRepository eventRepository)
+    public EventController(IEventService eventService)
     {
-        _eventRepository = eventRepository;
+        _eventService = eventService;
     }
     
     [HttpGet]
     public async Task<IActionResult> GetAllEvents()
     {
-        var events = await _eventRepository.GetAllAsync();
+        var events = await _eventService.GetAllAsync();
         return Ok(events.Select(@event => @event.ToDto()));
     }
     
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetEventById(int id)
     {
-        var @event = await _eventRepository.GetByIdAsync(id);
+        var @event = await _eventService.GetByIdAsync(id);
         return Ok(@event.ToDto());
     }
     
     [HttpPost]
     public async Task<ActionResult<IEnumerable<EventGetDTO>>> CreateEvent(EventPostPutDto eventPostPutDto)
     {
-        var @event = await _eventRepository.CreateAsync(eventPostPutDto.ToDomain());
+        var @event = await _eventService.CreateAsync(eventPostPutDto.ToDomain());
         return CreatedAtAction(nameof(GetEventById), new { id = @event.Id }, @event.ToDto());
     }
     
@@ -45,7 +46,7 @@ public class EventController : Controller
             {
                 var @event = eventPostPutDto.ToDomain();
                 @event.Id = id;
-                await _eventRepository.UpdateAsync(@event);
+                await _eventService.UpdateAsync(@event);
                 var eventGetDto = @event.ToDto();
 
                 return Ok(eventGetDto);
@@ -63,7 +64,7 @@ public class EventController : Controller
         {
             try
             {
-                var @event = await _eventRepository.DeleteAsync(id);
+                var @event = await _eventService.DeleteAsync(id);
                 var eventGetDto = @event.ToDto();
 
                 return Ok(eventGetDto);
@@ -73,5 +74,11 @@ public class EventController : Controller
                 return NotFound();
             }
         }
+    }
+    [HttpGet("User/{id:int}")]
+    public async Task<IActionResult> GetEventByUserId(int id)
+    {
+        var events = await _eventService.GetByUserIdAsync(id);
+        return Ok(events.Select(@event => @event.ToDto()));
     }
 }
