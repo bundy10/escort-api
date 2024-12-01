@@ -27,6 +27,7 @@ public static class UserMapper
             UserName = userPostPutDto.UserName,
             Password = userPostPutDto.Password,
             UserContactDetails = userPostPutDto.UserContactDetails,
+            UserVerificationDetails = userPostPutDto.UserVerificationDetails
         };
     }
 }
