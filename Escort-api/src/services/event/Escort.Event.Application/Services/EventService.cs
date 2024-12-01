@@ -12,9 +12,8 @@ public class EventService : IEventService
         _eventRepository = eventRepository;
     }
 
-    public async Task<Domain.Models.Event> CreateAsync(EventDetails eventDetails)
+    public async Task<Domain.Models.Event> CreateAsync(Domain.Models.Event eventT)
     {
-        var eventT = new Domain.Models.Event();
         return await _eventRepository.CreateAsync(eventT);
     }
     
@@ -28,14 +27,18 @@ public class EventService : IEventService
         return await _eventRepository.GetByIdAsync(id);
     }
     
-    public async Task<Domain.Models.Event> UpdateAsync(EventDetails eventDetails)
+    public async Task<Domain.Models.Event> UpdateAsync(Domain.Models.Event eventT)
     {
-        var eventT = new Domain.Models.Event();
         return await _eventRepository.UpdateAsync(eventT);
     }
     
     public async Task<Domain.Models.Event> DeleteAsync(int id)
     {
         return await _eventRepository.DeleteAsync(id);
+    }
+
+    public async Task<IEnumerable<Domain.Models.Event>> GetByUserIdAsync(int id)
+    {
+        return await _eventRepository.GetByUserIdAsync(id);
     }
 }
