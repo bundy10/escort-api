@@ -7,8 +7,15 @@ public static class EventMapper
         return new EventGetDTO()
         {
             Id = @event.Id,
-            EventDetails = @event.EventDetails,
-            Completed = @event.Completed
+            UserId = @event.UserId,
+            ClientId = @event.ClientId,
+            DriverId = @event.DriverId,
+            ListingId = @event.ListingId,
+            Date = @event.Date,
+            StartTime = @event.StartTime,
+            EndTime = @event.EndTime,
+            BookingTime = @event.BookingTime,
+            Status = @event.Status
         };
     }
 
@@ -16,8 +23,11 @@ public static class EventMapper
     {
         return new Domain.Models.Event()
         {
-            EventDetails = eventDto.EventDetails,
-            Completed = eventDto.Completed
+            Status = eventDto.Status,
+            Date = eventDto.Date,
+            StartTime = eventDto.StartTime,
+            EndTime = eventDto.EndTime,
+            BookingTime = eventDto.BookingTime
         };
     }
 }
