@@ -63,4 +63,9 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         await _context.SaveChangesAsync();
         return entityToDelete;
     }
+
+    public async Task<IEnumerable<TEntity>> GetByUserIdAsync(int id)
+    {
+        return await _entities.AsNoTracking().Where(e => e.UserId == id).ToListAsync();
+    }
 }
