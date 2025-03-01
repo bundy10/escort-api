@@ -44,7 +44,10 @@ namespace Escort.Listing.Infrastructure.Migrations
             modelBuilder.Entity("Escort.Listing.Domain.Models.ListingDetails", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -60,6 +63,9 @@ namespace Escort.Listing.Infrastructure.Migrations
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("ListingId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -79,6 +85,9 @@ namespace Escort.Listing.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ListingId")
+                        .IsUnique();
+
                     b.ToTable("ListingDetails");
                 });
 
@@ -86,7 +95,7 @@ namespace Escort.Listing.Infrastructure.Migrations
                 {
                     b.HasOne("Escort.Listing.Domain.Models.Listing", null)
                         .WithOne("ListingDetails")
-                        .HasForeignKey("Escort.Listing.Domain.Models.ListingDetails", "Id")
+                        .HasForeignKey("Escort.Listing.Domain.Models.ListingDetails", "ListingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

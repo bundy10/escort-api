@@ -9,13 +9,12 @@ public class ListingDbContext : DbContext
     }
     public DbSet<Domain.Models.Listing> Listings { get; set; }
     public DbSet<Domain.Models.ListingDetails> ListingDetails { get; set; }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Domain.Models.Listing>()
             .HasOne(l => l.ListingDetails)
             .WithOne()
-            .HasForeignKey<Domain.Models.ListingDetails>(ld => ld.Id);
+            .HasForeignKey<Domain.Models.ListingDetails>(ld => ld.ListingId);
     }
-    
 }

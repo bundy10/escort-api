@@ -18,18 +18,21 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
 
     public async Task<IEnumerable<TEntity>> GetAllAsync()
     {
-        return await Task.Run(() => _entities.AsNoTracking());
+        return await _entities.AsNoTracking()
+            .Include(e => e.ListingDetails)
+            .ToListAsync();
     }
 
     public async Task<TEntity> GetAsync(int id)
     {
-        var entity = await _entities.AsNoTracking().SingleOrDefaultAsync(e => e.Id == id);
+        var entity = await _entities.AsNoTracking()
+            .Include(e => e.ListingDetails)
+            .SingleOrDefaultAsync(e => e.Id == id);
 
         if (entity == null) throw new ModelNotFoundException();
 
         return entity;
     }
-
     public async Task<TEntity> CreateAsync(TEntity entity)
     {
         await _entities.AddAsync(entity);
