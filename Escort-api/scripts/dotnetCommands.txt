@@ -1,0 +1,25 @@
+
+Db Migrations for each service: (edit the name of the new migration file to be made)
+
+dotnet ef migrations add fixup2 --project src/services/user/Escort.User.Infrastructure --startup-project src/services/user/Escort.User.API
+
+dotnet ef migrations add fixup2 --project src/services/client/Escort.Client.Infrastructure --startup-project src/services/client/Escort.Client.API
+
+dotnet ef migrations add fixup2 --project src/services/driver/Escort.Driver.Infrastructure --startup-project src/services/driver/Escort.Driver.API
+
+dotnet ef migrations add fixup2 --project src/services/event/Escort.Event.Infrastructure --startup-project src/services/event/Escort.Event.API
+
+dotnet ef migrations add fixup2 --project src/services/listing/Escort.Listing.Infrastructure --startup-project src/services/listing/Escort.Listing.API
+
+
+Db Updates for each service: (edit the name of the new migration file made in the previous step)
+
+dotnet ef database update --project src/services/user/Escort.User.Infrastructure --startup-project src/services/user/Escort.User.API
+
+dotnet ef database update --project src/services/client/Escort.Client.Infrastructure --startup-project src/services/client/Escort.Client.API
+
+dotnet ef database update --project src/services/driver/Escort.Driver.Infrastructure --startup-project src/services/driver/Escort.Driver.API
+
+dotnet ef database update --project src/services/event/Escort.Event.Infrastructure --startup-project src/services/event/Escort.Event.API
+
+dotnet ef database update --project src/services/listing/Escort.Listing.Infrastructure --startup-project src/services/listing/Escort.Listing.API

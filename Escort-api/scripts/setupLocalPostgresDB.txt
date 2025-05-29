@@ -1,0 +1,65 @@
+for mac
+
+# Install and start PostgreSQL
+brew install postgresql
+brew services start postgresql
+
+# Connect as the default user
+psql postgres
+
+-- Create your database
+CREATE DATABASE companionDB;
+
+-- Create a user
+CREATE USER appuser WITH PASSWORD '123456789';
+
+-- Grant privileges
+GRANT ALL PRIVILEGES ON DATABASE companionDB TO appuser;
+
+
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Database=companionDB;Username=appuser;Password=123456789"
+  }
+}
+
+
+Windows PostgreSQL Installation
+1. Download PostgreSQL:
+
+Go to https://www.postgresql.org/download/windows/
+Click "Download the installer"
+Download the latest version (PostgreSQL 16.x)
+
+2. Run the Installer:
+
+Run the downloaded .exe file as Administrator
+Click "Next" through the welcome screens
+Installation Directory: Keep default (C:\Program Files\PostgreSQL\16\)
+Components: Keep all selected (PostgreSQL Server, pgAdmin, Command Line Tools)
+Data Directory: Keep default
+Password: Set a password for the postgres superuser (remember this!)
+Port: Keep default (5432)
+Locale: Keep default
+Click "Next" and "Install"
+
+3. After Installation:
+
+PostgreSQL should start automatically
+You'll see pgAdmin in your Start menu (GUI tool)
+
+Create Your Database:
+Option A: Using pgAdmin (GUI):
+
+Open pgAdmin from Start menu
+Enter the password you set during installation
+Right-click "Databases" → "Create" → "Database"
+Name: companionDB
+Click "Save"
