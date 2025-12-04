@@ -3,6 +3,7 @@ using Escort.Listing.Application.Services;
 using Escort.Listing.Infrastructure.DBcontext;
 using Escort.Listing.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using NetTopologySuite;
 
 namespace Escort.Listing.API
 {
@@ -10,6 +11,9 @@ namespace Escort.Listing.API
     {
         public static void Main(string[] args)
         {
+            // Load environment variables from .env file
+            DotNetEnv.Env.Load();
+            
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -34,7 +38,11 @@ namespace Escort.Listing.API
             builder.Services.AddDbContext<ListingDbContext>(options =>
             {
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
-                    b => b.MigrationsAssembly("Escort.Listing.Infrastructure"));
+                    b => 
+                    {
+                        b.MigrationsAssembly("Escort.Listing.Infrastructure");
+                        b.UseNetTopologySuite();
+                    });
             });
 
             var app = builder.Build();

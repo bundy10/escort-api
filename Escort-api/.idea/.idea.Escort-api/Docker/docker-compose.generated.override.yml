@@ -1,98 +1,110 @@
 # This is a generated file. Not intended for manual editing.
-version: "3.8"
 services:
   escort.client.api:
     build:
-      context: "/Users/Bundy.Huang/Documents/escort-api/Escort-api/src/services/client/Escort.Client.API"
-      dockerfile: "Dockerfile"
+      context: "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api"
+      dockerfile: "ClientDockerfile"
       target: "base"
     command: []
     entrypoint:
     - "dotnet"
     - "/app/bin/Debug/net8.0/Escort.Client.API.dll"
     environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
     image: "escort.client.api:dev"
     ports: []
     volumes:
-    - "/Users/Bundy.Huang/.nuget/packages:/home/app/.nuget/packages"
-    - "/Users/Bundy.Huang/Documents/escort-api/Escort-api/src/services/client/Escort.Client.API:/app:rw"
-    - "/Users/Bundy.Huang/Documents/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api/src/services/client/Escort.Client.API:/app:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/.nuget/packages:/root/.nuget/packages"
     working_dir: "/app"
-  escort.service3:
+  escort.driver.api:
     build:
-      context: "/Users/Bundy.Huang/Documents/escort-api/Escort-api/src/services/driver/Escort.driver.API"
-      dockerfile: "Dockerfile"
+      context: "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api"
+      dockerfile: "DriverDockerfile"
       target: "base"
     command: []
     entrypoint:
     - "dotnet"
     - "/app/bin/Debug/net8.0/Escort.Driver.API.dll"
     environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
     image: "escort.driver.api:dev"
     ports: []
     volumes:
-    - "/Users/Bundy.Huang/.nuget/packages:/home/app/.nuget/packages"
-    - "/Users/Bundy.Huang/Documents/escort-api/Escort-api/src/services/driver/Escort.Driver.API:/app:rw"
-    - "/Users/Bundy.Huang/Documents/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api/src/services/driver/Escort.Driver.API:/app:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/.nuget/packages:/root/.nuget/packages"
     working_dir: "/app"
-  escort.service4:
+  escort.event.api:
     build:
-      context: "/Users/Bundy.Huang/Documents/escort-api/Escort-api/src/services/event/Escort.event.API"
-      dockerfile: "Dockerfile"
+      context: "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api"
+      dockerfile: "EventDockerfile"
       target: "base"
     command: []
     entrypoint:
     - "dotnet"
     - "/app/bin/Debug/net8.0/Escort.Event.API.dll"
     environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
     image: "escort.event.api:dev"
     ports: []
     volumes:
-    - "/Users/Bundy.Huang/.nuget/packages:/home/app/.nuget/packages"
-    - "/Users/Bundy.Huang/Documents/escort-api/Escort-api/src/services/event/Escort.Event.API:/app:rw"
-    - "/Users/Bundy.Huang/Documents/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api/src/services/event/Escort.Event.API:/app:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/.nuget/packages:/root/.nuget/packages"
     working_dir: "/app"
-  escort.service5:
+  escort.listing.api:
     build:
-      context: "/Users/Bundy.Huang/Documents/escort-api/Escort-api/src/services/listing/Escort.listing.API"
-      dockerfile: "Dockerfile"
+      context: "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api"
+      dockerfile: "ListingDockerfile"
       target: "base"
     command: []
     entrypoint:
     - "dotnet"
     - "/app/bin/Debug/net8.0/Escort.Listing.API.dll"
     environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
     image: "escort.listing.api:dev"
     ports: []
     volumes:
-    - "/Users/Bundy.Huang/.nuget/packages:/home/app/.nuget/packages"
-    - "/Users/Bundy.Huang/Documents/escort-api/Escort-api/src/services/listing/Escort.Listing.API:/app:rw"
-    - "/Users/Bundy.Huang/Documents/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api/src/services/listing/Escort.Listing.API:/app:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/.nuget/packages:/root/.nuget/packages"
+    working_dir: "/app"
+  escort.payment.api:
+    build:
+      context: "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api"
+      dockerfile: "PaymentDockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Escort.Payment.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "escort.payment.api:dev"
+    ports: []
+    volumes:
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api/src/services/payment/Escort.Payment.API:/app:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/.nuget/packages:/root/.nuget/packages"
     working_dir: "/app"
   escort.user.api:
     build:
-      context: "/Users/Bundy.Huang/Documents/escort-api/Escort-api/src/services/user/Escort.User.API"
-      dockerfile: "Dockerfile"
+      context: "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api"
+      dockerfile: "UserDockerfile"
       target: "base"
     command: []
     entrypoint:
     - "dotnet"
     - "/app/bin/Debug/net8.0/Escort.User.API.dll"
     environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
     image: "escort.user.api:dev"
     ports: []
     volumes:
-    - "/Users/Bundy.Huang/.nuget/packages:/home/app/.nuget/packages"
-    - "/Users/Bundy.Huang/Documents/escort-api/Escort-api/src/services/user/Escort.User.API:/app:rw"
-    - "/Users/Bundy.Huang/Documents/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api/src/services/user/Escort.User.API:/app:rw"
+    - "/Users/Bundy.Huang/Documents/personal/escort-api/Escort-api:/src:rw"
+    - "/Users/Bundy.Huang/.nuget/packages:/root/.nuget/packages"
     working_dir: "/app"

@@ -1,10 +1,12 @@
 services:
+
   escort.user.api:
     build:
       context: .
       dockerfile: UserDockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=companionDB;Username=appuser;Password=123456789
     ports:
       - "8080:8080"
   escort.client.api:
@@ -13,6 +15,7 @@ services:
       dockerfile: ClientDockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=companionDB;Username=appuser;Password=123456789
     ports:
       - "8081:8080"
   escort.driver.api:
@@ -21,6 +24,7 @@ services:
       dockerfile: DriverDockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=companionDB;Username=appuser;Password=123456789
     ports:
       - "8082:8080"
   escort.listing.api:
@@ -29,13 +33,50 @@ services:
       dockerfile: ListingDockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=companionDB;Username=appuser;Password=123456789
     ports:
       - "8083:8080"
-  escort.event.api:
+  escort.booking.api:
     build:
       context: .
-      dockerfile: EventDockerfile
+      dockerfile: BookingDockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=companionDB;Username=appuser;Password=123456789
+      - Services__PaymentAPI=http://escort.payment.api:8080
     ports:
-      - "8084:8080"
+      - "8088:8080"
+  escort.payment.api:
+    build:
+      context: .
+      dockerfile: PaymentDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=companionDB;Username=appuser;Password=123456789
+      - Stripe__SecretKey=${STRIPE_SECRET_KEY}
+      - Stripe__PublishableKey=${STRIPE_PUBLISHABLE_KEY}
+    ports:
+      - "8085:8080"
+  escort.safety.api:
+    build:
+      context: .
+      dockerfile: SafetyDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=companionDB;Username=appuser;Password=123456789
+      - Stripe__SecretKey=${STRIPE_SECRET_KEY}
+      - Stripe__PublishableKey=${STRIPE_PUBLISHABLE_KEY}
+      - Stripe__WebhookSecret=${STRIPE_WEBHOOK_SECRET}
+      - UserApi__BaseUrl=http://escort.user.api:8080
+    ports:
+      - "8086:8080"
+  escort.chat.api:
+    build:
+      context: .
+      dockerfile: ChatDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=companionDB;Username=appuser;Password=123456789
+      - Services__BookingAPI=http://escort.booking.api:8080
+    ports:
+      - "8087:8080"

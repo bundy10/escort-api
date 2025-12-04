@@ -10,6 +10,9 @@ namespace Escort.Driver.API
     {
         public static void Main(string[] args)
         {
+            // Load environment variables from .env file
+            DotNetEnv.Env.Load();
+            
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.

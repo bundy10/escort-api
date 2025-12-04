@@ -62,4 +62,26 @@ public class ListingController : Controller
         var listing = await _listingRepository.DeleteAsync(id);
         return Ok(listing.ToDto());
     }
+    
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchListingsByLocation([FromQuery] double lat, [FromQuery] double lon, [FromQuery] double radiusKm = 10)
+    {
+        if (lat < -90 || lat > 90)
+        {
+            return BadRequest("Latitude must be between -90 and 90");
+        }
+        
+        if (lon < -180 || lon > 180)
+        {
+            return BadRequest("Longitude must be between -180 and 180");
+        }
+        
+        if (radiusKm <= 0)
+        {
+            return BadRequest("Radius must be greater than 0");
+        }
+        
+        var listings = await _listingRepository.SearchByLocationAsync(lat, lon, radiusKm);
+        return Ok(listings.Select(listing => listing.ToDto()));
+    }
 }

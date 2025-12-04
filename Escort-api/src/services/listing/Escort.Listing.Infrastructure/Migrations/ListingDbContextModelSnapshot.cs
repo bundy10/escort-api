@@ -4,6 +4,7 @@ using Escort.Listing.Infrastructure.DBcontext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -20,6 +21,7 @@ namespace Escort.Listing.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "9.0.0-rc.2.24474.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "postgis");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Escort.Listing.Domain.Models.Listing", b =>
@@ -33,10 +35,17 @@ namespace Escort.Listing.Infrastructure.Migrations
                     b.Property<bool>("Listed")
                         .HasColumnType("boolean");
 
+                    b.Property<Point>("Location")
+                        .HasColumnType("geometry (point, 4326)");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Location");
+
+                    NpgsqlIndexBuilderExtensions.HasMethod(b.HasIndex("Location"), "gist");
 
                     b.ToTable("Listings");
                 });
