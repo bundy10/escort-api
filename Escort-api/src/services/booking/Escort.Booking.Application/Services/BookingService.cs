@@ -102,8 +102,15 @@ public class BookingService : IBookingService
             throw new InvalidOperationException($"Cannot complete booking with status {booking.Status}");
         }
 
-        // Update status to Completed
+        // Update status to Completed and set payout due date
         booking.Status = BookingStatus.Completed;
+        booking.PayoutDueAt = DateTime.UtcNow.AddDays(7); // 7-day hold period before payout
+        booking.PayoutProcessed = false; // Ensure it's marked as not processed
+        
+        _logger.LogInformation(
+            "Marking booking {BookingId} as completed. Payout scheduled for {PayoutDueAt}",
+            id, booking.PayoutDueAt);
+        
         await _bookingRepository.UpdateAsync(booking);
 
         // Schedule the payout

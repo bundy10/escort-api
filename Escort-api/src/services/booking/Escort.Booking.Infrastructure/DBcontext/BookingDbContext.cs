@@ -20,6 +20,8 @@ public class BookingDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Status).HasConversion<string>();
             entity.Property(e => e.PaymentIntentId).HasMaxLength(255);
+            entity.Property(e => e.PayoutDueAt).IsRequired(false);
+            entity.Property(e => e.PayoutProcessed).IsRequired().HasDefaultValue(false);
         });
     }
 }

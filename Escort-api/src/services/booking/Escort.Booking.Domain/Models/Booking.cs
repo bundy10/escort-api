@@ -10,5 +10,7 @@ public class Booking : BaseDomainModel
     public DateTime BookingTime { get; set; }
     public BookingStatus Status { get; set; } = BookingStatus.Pending;
     public string? PaymentIntentId { get; set; }
+    public DateTime? PayoutDueAt { get; set; }
+    public bool PayoutProcessed { get; set; } = false;
 }
 

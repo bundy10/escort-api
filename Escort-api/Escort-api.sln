@@ -70,6 +70,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Booking.Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Booking.Infrastructure", "src\services\booking\Escort.Booking.Infrastructure\Escort.Booking.Infrastructure.csproj", "{E42FFB95-5328-47C7-B606-4DABCD0E97CA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workers", "workers", "{FE5F7021-A3C9-35C7-FF50-8DA81625868E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escort.Worker.Payout", "src\workers\Escort.Worker.Payout\Escort.Worker.Payout.csproj", "{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -368,6 +372,18 @@ Global
 		{E42FFB95-5328-47C7-B606-4DABCD0E97CA}.Release|x64.Build.0 = Release|Any CPU
 		{E42FFB95-5328-47C7-B606-4DABCD0E97CA}.Release|x86.ActiveCfg = Release|Any CPU
 		{E42FFB95-5328-47C7-B606-4DABCD0E97CA}.Release|x86.Build.0 = Release|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Debug|x64.Build.0 = Debug|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Debug|x86.Build.0 = Debug|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Release|x64.ActiveCfg = Release|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Release|x64.Build.0 = Release|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Release|x86.ActiveCfg = Release|Any CPU
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -398,5 +414,7 @@ Global
 		{A705B8DC-E4E3-4748-82F0-14FF84794F3D} = {4123167B-43F7-B7D6-9F7F-37C16FB29096}
 		{54EB9879-BDB6-459D-A270-8D366D56AC00} = {4123167B-43F7-B7D6-9F7F-37C16FB29096}
 		{E42FFB95-5328-47C7-B606-4DABCD0E97CA} = {4123167B-43F7-B7D6-9F7F-37C16FB29096}
+		{FE5F7021-A3C9-35C7-FF50-8DA81625868E} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{D04838D2-5FB7-4DE5-9F80-2E1621D5711C} = {FE5F7021-A3C9-35C7-FF50-8DA81625868E}
 	EndGlobalSection
 EndGlobal
