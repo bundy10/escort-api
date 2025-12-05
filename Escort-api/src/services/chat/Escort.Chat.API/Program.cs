@@ -1,5 +1,8 @@
 using Escort.Chat.API.Hubs;
 using Escort.Chat.API.Services;
+using Escort.Chat.API.Data;
+using Escort.Chat.API.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 // Load environment variables from .env file
 DotNetEnv.Env.Load();
@@ -11,6 +14,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configure database context
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")
+    ?? builder.Configuration.GetConnectionString("DefaultConnection");
+
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new InvalidOperationException(
+        "DefaultConnection connection string is not configured. " +
+        "Please set ConnectionStrings__DefaultConnection in .env file or ConnectionStrings:DefaultConnection in appsettings.json");
+}
+
+builder.Services.AddDbContext<ChatDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
 // Add SignalR
 builder.Services.AddSignalR();
 
@@ -19,6 +36,7 @@ builder.Services.AddHttpClient();
 
 // Register services
 builder.Services.AddScoped<IBookingValidationService, BookingValidationService>();
+builder.Services.AddScoped<IChatRepository, ChatRepository>();
 
 // Add CORS
 builder.Services.AddCors(options =>

@@ -1,5 +1,23 @@
 services:
 
+  escort.gateway:
+    build:
+      context: .
+      dockerfile: GatewayDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8000:8080"
+    depends_on:
+      - escort.user.api
+      - escort.client.api
+      - escort.driver.api
+      - escort.listing.api
+      - escort.booking.api
+      - escort.payment.api
+      - escort.safety.api
+      - escort.chat.api
+
   escort.user.api:
     build:
       context: .

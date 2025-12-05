@@ -1,0 +1,6 @@
+@Escort.Gateway_HostAddress = http://localhost:5119
+
+GET {{Escort.Gateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
